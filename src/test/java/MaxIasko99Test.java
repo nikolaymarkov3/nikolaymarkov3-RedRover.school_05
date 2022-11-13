@@ -3,7 +3,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
-
 import java.util.List;
 
 public class MaxIasko99Test extends BaseTest {
