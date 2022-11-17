@@ -10,7 +10,7 @@ public class AnastassiaITest extends BaseTest {
     static final String BASE_URL = "https://www.99-bottles-of-beer.net";
 
     @Test
-    public void testSearchForLanguage_HappyPath() {
+    public void testSearchForLanguage_HappyPath(){
         final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
