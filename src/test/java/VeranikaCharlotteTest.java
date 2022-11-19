@@ -40,4 +40,25 @@ for (int i=0; i <languagesNamesList.size(); i ++){
 }
 
     }
-}
+    @Test
+    public void testGuestbookFooterLink_WhenClickingOnLink_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String expectedResult = "[https://www.99-bottles-of-beer.net/guestbookv2.html](https://www.99-bottles-of-beer.net/guestbookv2.html)";
+
+        getDriver().get(BASE_URL);
+        WebElement GuestbookOnTheFooter = getDriver().findElement(
+                By.xpath("//div[@id='footer']//a[@href='/guestbookv2.html']")
+        );
+        GuestbookOnTheFooter.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+}}
+
+
+
+
+
+
+
+
+
