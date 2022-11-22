@@ -16,6 +16,8 @@ public class AnastassiaITest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
+    final static By SUBMENU_INFO_LINK = By.xpath("//a[@href='info.html']");
+    final static By HEADER_H_2 = By.xpath("//div[@id='main']/h2");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -54,6 +56,10 @@ public class AnastassiaITest extends BaseTest {
         return list.size();
     }
 
+    private String getText(By by,WebDriver driver){
+        return getElement(by, driver).getText();
+    }
+@Ignore
     @Test
     public void testSearchForLanguage_HappyPath() {
         final String LANGUAGE_NAME = "python";
@@ -73,19 +79,14 @@ public class AnastassiaITest extends BaseTest {
         }
     }
 
-    @Ignore
+
     @Test
     public void testH2TagText_WhenTestSubmenuInfo() {
         String expectedResult = "History";
 
-        getDriver().get(BASE_URL);
-
-        WebElement submenuInfoLink = getDriver().findElement(By.xpath("//a[@href='info.html']"));
-        submenuInfoLink.click();
-
-        WebElement headerH2 = getDriver().findElement(By.xpath("//div[@id='main']/h2"));
-        String actualResult = headerH2.getText();
-
+        openBaseURL(getDriver());
+        click(SUBMENU_INFO_LINK, getDriver());
+        String actualResult = getText(HEADER_H_2, getDriver());
         Assert.assertEquals(actualResult, expectedResult);
     }
 }
