@@ -18,6 +18,8 @@ public class Albina_starTest extends BaseTest {
     final static By MAIN_SUBMIT_NEW_LANGUAGE = By.xpath("//ul[@id= 'menu']//li/a[@href='/submitnewlanguage.html']");
     final static By PLEASE_NOTE = By.xpath("//div[@id=\"main\"]/h3");
     final static By PLEASE_NOTE_LIST = By.xpath("//div[@id='main']/ul/li");
+    final static By SUBMIT_LANGUAGE_BUTTON = By.xpath("//p/input[@name='submitlanguage']");
+    final static By ERROR_MESSAGE = By.xpath("//div[@id='main']/p[@style]");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -61,6 +63,11 @@ public class Albina_starTest extends BaseTest {
     private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
+    }
+
+    public String getErrorMessageText(By by) {
+
+        return getDriver().findElement(by).getText();
     }
 
     @Test
@@ -144,5 +151,18 @@ public class Albina_starTest extends BaseTest {
 
         int actualQuantityOfPleaseNote = getListSize(PLEASE_NOTE_LIST, getDriver());
         Assert.assertEquals(actualQuantityOfPleaseNote, expectedQuantityOfPleaseNote);
+    }
+
+    @Test
+    public void testErrorMessageSubmitLanguageButton_HappyPath() {
+        final String expectedResultErrorMessageSubmitLanguageButton = "Error: " +
+                "Precondition failed - Incomplete Input.";
+
+        openBaseURL(getDriver());
+        click(MAIN_SUBMIT_NEW_LANGUAGE, getDriver());
+        click(SUBMIT_LANGUAGE_BUTTON, getDriver());
+        getErrorMessageText(ERROR_MESSAGE);
+
+        Assert.assertEquals(getText(ERROR_MESSAGE), expectedResultErrorMessageSubmitLanguageButton);
     }
 }
