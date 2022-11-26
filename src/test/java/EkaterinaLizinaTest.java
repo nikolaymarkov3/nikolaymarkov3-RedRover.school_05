@@ -1,4 +1,5 @@
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,17 +25,18 @@ public class EkaterinaLizinaTest extends BaseTest {
     private final By GUEST_BOOK_MENU = By.xpath("//div[@id = 'navigation']//a[@href = '/guestbookv2.html']");
     private final By ERROR_MESSAGE = By.xpath("//div[@id = 'main']/p/b/u");
     private final By SIGN_GUESTBOOK_SUBMENU = By.xpath("//ul[@id = 'submenu']/li/a[@href = './signv2.html']");
-    private final By NAME= By.name("name");
+    private final By NAME = By.name("name");
     private final By LOCATION = By.name("location");
     private final By EMAIL = By.name("email");
     private final By MESSAGE = By.name("comment");
     private final By SUBMIT_BUTTON = By.name("submit");
-    //
     private final By TOP_LISTS_MENU = By.xpath("//ul[@id = 'menu']//a[@href = '/toplist.html']");
     private final By TOP_RATED_REAL_SUBMENU = By.xpath("//ul[@id = 'submenu']//a[@href = './toplist_real.html']");
     private final By TOP_ESOTERIC_SUBMENU = By.xpath("//ul[@id = 'submenu']//a[@href ='./toplist_esoteric.html']");
     private final By TOP_RATED_REAL_LANGUAGE_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
     private final By TOP_RATED_ESOTERIC_LANGUAGE = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
+    private final By ALERT_URL_SIGNGUESTBOOK_SUBMENU_MESSAGE = By.xpath("//a/img[@src = '/images/bb/bburl.gif']");
+
     private void openBaseURL(WebDriver driver){
        driver.get(BASE_URL);
     }
@@ -82,6 +84,19 @@ public class EkaterinaLizinaTest extends BaseTest {
     }
     private void sendKeys(By by, String text, WebDriver driver) {
         driver.findElement(by).sendKeys(text);
+    }
+
+    private String getAlertText(WebDriverWait wait){
+       Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+        return alert.getText();
+    }
+
+    private void acceptAlert(WebDriverWait wait, String text){
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.sendKeys(text);
+        alert.accept();
+        alert.accept();
     }
     @Test
     public void testSearchForLanguageByName_HappyPath(){
@@ -178,5 +193,18 @@ public class EkaterinaLizinaTest extends BaseTest {
         }
 
         Assert.assertNotEquals(languageTopRatedReal, languageTopEsotoric);
+    }
+
+    @Test
+    public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert(){
+        openBaseURL(getDriver());
+        click(GUEST_BOOK_MENU, getDriver());
+        click(SIGN_GUESTBOOK_SUBMENU, getDriver());
+        click(ALERT_URL_SIGNGUESTBOOK_SUBMENU_MESSAGE, getDriver());
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+
+        Assert.assertEquals(getAlertText(wait), "Enter the URL for the link you want to add.");
+
+        acceptAlert(wait, "my text");
     }
 }
