@@ -33,12 +33,14 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id = 'footer']/p/a[@href='/abc.html']")
     private WebElement browseLanguagesFooterMenu;
 
+    @FindBy(xpath = "//ul[@id= 'menu']//li/a[@href='/toplist.html']")
+    private WebElement topListsMenu;
+
     @FindBy(xpath = "//div[@id='header']/h1")
     private WebElement h1Header;
 
     @FindBy(xpath = "//div[@id='header']/h2")
     private WebElement h2Header;
-
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -90,6 +92,12 @@ public abstract class MainPage extends BasePage {
         return new StartPage(getDriver());
     }
 
+    public TopListsPage clickTopListsMenu() {
+        click(topListsMenu);
+
+        return new TopListsPage(getDriver());
+    }
+    
     public ABCPage clickBrowseLanguagesFooterMenu() {
         click(browseLanguagesFooterMenu);
 
