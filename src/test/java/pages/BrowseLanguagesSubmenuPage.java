@@ -30,6 +30,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
     private List<WebElement> symbolsInSubmenu;
 
+    @FindBy(xpath = "//a[@href='m.html']")
+    private WebElement mSubmenu;
+
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -93,5 +96,11 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         }
 
         return null;
+    }
+
+    public MPage clickMSubmenu() {
+        click(mSubmenu);
+
+        return new MPage(getDriver());
     }
 }
