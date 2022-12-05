@@ -28,6 +28,7 @@ public class ABCTest extends BaseTest {
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
+
     @Test
     public void testTextABC() {
         final String expectedResult = "Category A";
