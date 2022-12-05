@@ -71,7 +71,7 @@ public class SearchLanguagesTest extends BaseTest {
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickGoButton()
-                        .getListSizeFromTable();
+                        .getNamesListSize();
 
         Assert.assertTrue(languagesNames == 0);
     }
