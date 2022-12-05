@@ -41,6 +41,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
     private List<WebElement> symbolsInSubmenu;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li//a[contains(text(), 'Z')]")
+    private WebElement ZSubmenu;
+
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -102,6 +105,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(kSubmenu);
 
         return new KPage(getDriver());
+    }
+
+    public ZPage clickZSubmenuButton() {
+        click(ZSubmenu);
+
+        return new ZPage(getDriver());
     }
     
     public List<String> getListSymbolsInSubmenu() {
