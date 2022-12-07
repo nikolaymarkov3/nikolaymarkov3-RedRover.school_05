@@ -54,4 +54,15 @@ public class HistoryTest extends BaseTest {
 
         Assert.assertEquals(actualRegularText, expectedRegularText);
     }
+
+    @Test
+    public void testNumberOfImagesOnHistoryPage(){
+        final int expectedNumberOfImages = 2;
+
+        int actualNumberOfImages = openBaseURL()
+                .clickHistorySubmenu()
+                .countHistotyPageImages();
+
+        Assert.assertEquals(actualNumberOfImages,expectedNumberOfImages);
+    }
 }
