@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.BashLanguagePage;
 
 public class BashLanguageTest extends BaseTest {
 
@@ -12,16 +13,14 @@ public class BashLanguageTest extends BaseTest {
         final String expectedLanguageURL = "https://www.99-bottles-of-beer.net/language-bash-1815.html";
         final String expectedLanguageTitle = "99 Bottles of Beer | Language BASH";
 
-        String actualLanguageName = openBaseURL()
+        BashLanguagePage bashLanguagePage = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
-                .clickBashLanguageLink()
-                .getH2HeaderText();
+                .clickBashLanguageLink();
 
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), expectedLanguageURL);
-        Assert.assertEquals(getDriver().getTitle(), expectedLanguageTitle);
-        Assert.assertEquals(actualLanguageName, expectedLanguageName);
+        Assert.assertEquals(bashLanguagePage.getURL(), expectedLanguageURL);
+        Assert.assertEquals(bashLanguagePage.getTitle(), expectedLanguageTitle);
+        Assert.assertEquals(bashLanguagePage.getH2HeaderText(), expectedLanguageName);
     }
 
     @Test
