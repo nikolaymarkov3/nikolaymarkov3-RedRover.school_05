@@ -13,13 +13,13 @@ public class AdaLanguageTest extends BaseTest {
         final String expectedLanguageURL = "https://www.99-bottles-of-beer.net/language-ada-19.html";
         final String expectedLanguageTitle = "99 Bottles of Beer | Language Ada";
 
-        AdaLanguagePage bashLanguagePage = openBaseURL()
+        AdaLanguagePage adaLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickASubmenu()
                 .clickAdaLanguageLink();
 
-        Assert.assertEquals(bashLanguagePage.getURL(), expectedLanguageURL);
-        Assert.assertEquals(bashLanguagePage.getTitle(), expectedLanguageTitle);
-        Assert.assertEquals(bashLanguagePage.getH2HeaderText(), expectedLanguageName);
+        Assert.assertEquals(adaLanguagePage.getURL(), expectedLanguageURL);
+        Assert.assertEquals(adaLanguagePage.getTitle(), expectedLanguageTitle);
+        Assert.assertEquals(adaLanguagePage.getH2HeaderText(), expectedLanguageName);
     }
 }
