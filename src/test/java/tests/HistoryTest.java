@@ -56,12 +56,12 @@ public class HistoryTest extends BaseTest {
     }
 
     @Test
-    public void testNumberOfImagesOnHistoryPage(){
+    public void testNumberOfImages(){
         final int expectedNumberOfImages = 2;
 
         int actualNumberOfImages = openBaseURL()
                 .clickHistorySubmenu()
-                .countHistotyPageImages();
+                .countHistoryPageImages();
 
         Assert.assertEquals(actualNumberOfImages,expectedNumberOfImages);
     }
