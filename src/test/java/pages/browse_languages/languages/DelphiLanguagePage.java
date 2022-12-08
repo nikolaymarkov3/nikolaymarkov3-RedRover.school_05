@@ -3,9 +3,9 @@ package pages.browse_languages.languages;
 import org.openqa.selenium.WebDriver;
 import pages.browse_languages.BrowseLanguagesSubmenuPage;
 
-public class CheetahLanguagePage extends LanguagePage {
+public class DelphiLanguagePage extends LanguagePage {
 
-    public CheetahLanguagePage(WebDriver driver) {
+    public DelphiLanguagePage(WebDriver driver) {
         super(driver);
     }
 }
