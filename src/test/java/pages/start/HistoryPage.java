@@ -36,7 +36,7 @@ public class HistoryPage extends StartSubmenuPage {
         return historySubmenu.getText();
     }
 
-    public int countHistoryPageImages(){
+    public int countHistoryPageImages() {
 
         return getListSize(imagesHistoryPage);
     }
