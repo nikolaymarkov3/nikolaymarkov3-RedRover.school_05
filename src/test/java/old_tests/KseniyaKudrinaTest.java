@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
@@ -95,7 +94,6 @@ public class KseniyaKudrinaTest extends BaseTest {
                 getTextByElement(ADD_COMMENT_ON_THE_PAGE_FIELD,getDriver()),
                 CONFIRM_COMMENT);
     }
-    @Ignore
     @Test
     public void testConfirmNewTitleOfPagePiet_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";

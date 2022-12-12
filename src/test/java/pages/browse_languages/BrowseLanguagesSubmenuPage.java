@@ -189,4 +189,8 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
         return currentURL;
     }
+    public String getHrefJ(String attribute) {
+
+        return getAttribute(jSubmenu, "href");
+    }
 }
