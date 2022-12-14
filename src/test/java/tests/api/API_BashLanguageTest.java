@@ -4,8 +4,8 @@ import base.BaseTest;
 import network.CaptureNetworkTraffic;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
+import org.testng.Reporter;
 import pages.browse_languages.languages.BashLanguagePage;
 
 import static utils.TestUtils.getBaseUrl;
