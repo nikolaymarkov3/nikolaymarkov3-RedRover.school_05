@@ -18,20 +18,14 @@ public class ATest extends BaseTest {
                 .clickBrowseLanguagesMenu()
                 .clickASubmenu();
 
-        List<Integer> commentList = aPage
-                .getColumnCommentList();
-
-        int maxComment = aPage
-                .getMaxList(commentList);
+        int maxComment = aPage.getCommentWithMaxCount();
 
         Assert.assertEquals(maxComment, expectedMaxComment);
 
         int maxCommentIndex = aPage
                 .clickASubmenu()
-                .getColumnCommentList()
-                .indexOf(aPage
-                        .getSortedList(commentList)
-                        .get(commentList.size() - 1));
+                .getComments()
+                .indexOf(aPage.getCommentWithMaxCount());
 
         String languageName = aPage
                 .clickASubmenu()

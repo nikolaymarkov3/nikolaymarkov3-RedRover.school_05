@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.guest_book.GuestBookV2Page;
+import pages.guest_book.ReadGuestbookPage;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
@@ -47,7 +47,7 @@ public class StartTest extends BaseTest {
                 "For more detailed information refer to historic information.";
 
         String teamWishes = openBaseURL()
-                .getTeamWishes();
+                .getFirstParagraphText();
 
         Assert.assertEquals(teamWishes, WISHES_FROM_THE_TEAM);
     }
@@ -57,7 +57,7 @@ public class StartTest extends BaseTest {
         final String expectedHeaderH2 = "Welcome to 99 Bottles of Beer";
 
         String actualHeader = openBaseURL()
-                .getH2();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualHeader, expectedHeaderH2);
     }
@@ -81,16 +81,13 @@ public class StartTest extends BaseTest {
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
         HistoryPage historyPage = new HistoryPage(getDriver());
+        StartPage startPage = new StartPage(getDriver());
 
-        String oldURL =
-                openBaseURL()
-                        .getStartPageURL();
+        String oldURL = openBaseURL().getURL();
+        String actualURL = startPage.clickHistoricInformationLink().getURL();
 
-        new StartPage(getDriver()).clickHistoricInformationLink();
+        Assert.assertNotEquals(oldURL, actualURL);
 
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualURL = historyPage.getURL();
         String actualTitle = historyPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
@@ -149,7 +146,7 @@ public class StartTest extends BaseTest {
         final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
         final String expectedTitle = "99 Bottles of Beer | Guestbook";
 
-        GuestBookV2Page guestBookV2Page = new GuestBookV2Page(getDriver());
+        ReadGuestbookPage readGuestBookPage = new ReadGuestbookPage(getDriver());
 
         String oldURL =
                 openBaseURL()
@@ -159,8 +156,8 @@ public class StartTest extends BaseTest {
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
 
-        String actualURL = guestBookV2Page.getURL();
-        String actualTitle = guestBookV2Page.getTitle();
+        String actualURL = readGuestBookPage.getURL();
+        String actualTitle = readGuestBookPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
