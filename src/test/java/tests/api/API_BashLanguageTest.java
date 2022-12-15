@@ -49,7 +49,9 @@ public class API_BashLanguageTest extends BaseTest {
             "Comments\n" +
             " Vittorio said on 09/13/08 14:11:26\n" +
             " yeti said on 10/27/08 02:07:02\n" +
-            "Dear Vittorio, \"no recursion\" is correct because \"source $0\" does not mimic a call. It acts like placing the same soure lines linearily at this point at the same level as the preceeding lines.\n" +
+            "Dear Vittorio, \"no recursion\" is correct because \"source $0\" " +
+            "does not mimic a call. It acts like placing the same soure lines linearily " +
+            "at this point at the same level as the preceeding lines.\n" +
             " Paulo Matos said on 12/18/08 03:22:07\n" +
             "Sorry this script is recursive. Recursion is done with $order.\n" +
             "Download Source | Write Comment";
