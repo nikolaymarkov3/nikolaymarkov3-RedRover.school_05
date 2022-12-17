@@ -232,4 +232,13 @@ public abstract class MainPage extends BasePage {
 
         return getListSize(pTags);
     }
+
+    public List<WebElement> getMenuLinks() {
+
+        return menuLinks;
+    }
+
+    public void clickTopMenu(int index) {
+        getMenuLinks().get(index).click();
+    }
 }

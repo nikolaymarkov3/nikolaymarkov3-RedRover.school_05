@@ -1,4 +1,4 @@
-package tests;
+package pages;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -11,7 +11,7 @@ import java.util.List;
 public class MainTest extends BaseTest {
 
     @Test
-    public void testH1Header() {
+    public void testH1LogoHeader() {
         final String EXPECTED_H1_HEADER = "99 Bottles of Beer";
 
         String actualResultH1Header = openBaseURL().getH1LogoHeaderText();
@@ -20,7 +20,7 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void testH2Header() {
+    public void testH2LogoHeader() {
         final String EXPECTED_H2_HEADER = "one program in 1500 variations";
 
         String actualResultH2Header = openBaseURL().getH2LogoHeaderText();
@@ -68,4 +68,38 @@ public class MainTest extends BaseTest {
             Assert.assertEquals(actualText.get(i), expectedText[i].toLowerCase());
         }
     }
+
+    @Test(dataProviderClass = TestData.class,
+            dataProvider = "MainTestData")
+    public void testTopMenusNavigateToCorrespondingPages(
+            int index, String menuText,String href, String url, String title) {
+
+        StartPage startPage = openBaseURL();
+
+        String oldURL = startPage.getURL();
+        String oldTitle = startPage.getTitle();
+
+        startPage.clickTopMenu(index);
+
+        String actualUrl = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualUrl, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+        Assert.assertEquals(actualUrl, url);
+        Assert.assertEquals(actualTitle, title);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
