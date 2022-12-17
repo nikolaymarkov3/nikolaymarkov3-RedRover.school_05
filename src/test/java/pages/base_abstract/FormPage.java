@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public abstract class FormPage extends MainPage {
+
     @FindBy(name = "name")
     WebElement name;
 

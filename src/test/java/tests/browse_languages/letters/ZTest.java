@@ -3,7 +3,6 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.base_abstract.MainPage;
 import pages.browse_languages.languages.ZimLanguagePage;
 import pages.browse_languages.letters.ZPage;
 
@@ -17,7 +16,7 @@ public class ZTest extends BaseTest {
 
         List<String> zLanguages = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickZSubmenuButton()
+                .clickZSubmenu()
                 .getNamesInLowerCase();
 
         Assert.assertTrue(zLanguages.size() > 0);
@@ -36,7 +35,7 @@ public class ZTest extends BaseTest {
 
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickZSubmenuButton()
+                .clickZSubmenu()
                 .getURL();
 
         String actualUrl = zPage.clickZimLanguage().getURL();
@@ -55,7 +54,7 @@ public class ZTest extends BaseTest {
                 .clickTopListsMenu()
                 .clickTopHitsSubmenu()
                 .clickBrowseLanguagesFooterMenu()
-                .clickZSubmenuButton()
+                .clickZSubmenu()
                 .getH2HeaderText();
 
         Assert.assertEquals(actualResult, expectedResult);

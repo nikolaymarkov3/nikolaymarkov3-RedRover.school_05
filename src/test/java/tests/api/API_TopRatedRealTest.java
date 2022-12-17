@@ -52,7 +52,7 @@ public class API_TopRatedRealTest extends BaseTest {
 
         TopRatedRealPage topRatedRealPage = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu();
 
-        Assert.assertEquals(topRatedRealPage.getHrefJ(), getBaseUrl() + ACTION);
+        Assert.assertEquals(topRatedRealPage.getHref(), getBaseUrl() + ACTION);
         Assert.assertEquals(topRatedRealPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 

@@ -30,6 +30,16 @@ public abstract class TopListsSubmenuPage extends TablePage {
         super(driver);
     }
 
+    public List<String> getSubmenusTexts() {
+
+        return getListText(topListSubmenus);
+    }
+
+    public String getHref() {
+
+        return getAttribute(topRatedRealSubmenu, "href");
+    }
+
     public TopRatedRealPage clickTopRatedRealSubmenu() {
         click(topRatedRealSubmenu);
 
@@ -48,19 +58,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new NewCommentsPage(getDriver());
     }
 
-    public List<String> getSubmenusTexts() {
-
-        return getListText(topListSubmenus);
-    }
-
     public TopHitsPage clickTopHitsSubmenu() {
         click(topHitsSubmenu);
 
         return new TopHitsPage(getDriver());
-    }
-
-    public String getHrefJ() {
-
-        return getAttribute(topRatedRealSubmenu, "href");
     }
 }

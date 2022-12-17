@@ -65,6 +65,21 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         super(driver);
     }
 
+    public List<WebElement> getSubmenus() {
+
+        return submenus;
+    }
+
+    public List<String> getSubmenusNames() {
+
+        return getListText(submenus);
+    }
+
+    public String getHrefJ() {
+
+        return getAttribute(jSubmenu, "href");
+    }
+
     public APage clickASubmenu() {
         click(aSubmenu);
 
@@ -93,6 +108,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(eSubmenu);
 
         return new EPage(getDriver());
+    }
+
+    public FPage clickFSubmenu() {
+        click(fSubmenu);
+
+        return new FPage(getDriver());
     }
 
     public GPage clickGSubmenu() {
@@ -143,40 +164,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new YPage(getDriver());
     }
 
-    public ZPage clickZSubmenuButton() {
+    public ZPage clickZSubmenu() {
         click(zSubmenu);
 
         return new ZPage(getDriver());
-    }
-
-    public List<WebElement> getSubmenus() {
-
-        return submenus;
-    }
-
-    public List<String> getSubmenusNames() {
-
-        return getListText(submenus);
-    }
-
-    public String getHrefN() {
-
-        return getAttribute(nSubmenu, "href");
-    }
-
-    public String getHrefJ() {
-
-        return getAttribute(jSubmenu, "href");
-    }
-
-    public String getSubmenuAText() {
-
-        return getText(aSubmenu);
-    }
-
-    public FPage clickFSubmenu() {
-        click(fSubmenu);
-
-        return new FPage(getDriver());
     }
 }

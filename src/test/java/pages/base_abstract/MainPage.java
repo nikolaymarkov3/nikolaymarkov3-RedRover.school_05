@@ -111,9 +111,49 @@ public abstract class MainPage extends BasePage {
         return getListText(h3Header);
     }
 
-    public WebElement getH2Header() {
+    public List<String> getMenuTextsInLowerCase() {
 
-        return h2Header;
+        return getListTextInLowerCase(menuLinks);
+    }
+
+    public int getMenuLinksSize() {
+
+        return getListSize(menuLinks);
+    }
+
+    public List<WebElement> getLinks() {
+
+        return links;
+    }
+
+    public String getPageContext() {
+
+        return getText(mainBody);
+    }
+
+    public List<WebElement> getImages() {
+
+        return images;
+    }
+
+    public String getFirstParagraphText(){
+
+        return getText(firstParagraph);
+    }
+
+    public String getHref(WebElement element) {
+
+        return getAttribute(element, "href");
+    }
+
+    public String getColor(WebElement element) {
+
+        return element.getCssValue("color");
+    }
+
+    public String getH2HeaderColor() {
+
+        return getColor(h2Header);
     }
 
     public StartPage clickStartMenu() {
@@ -188,53 +228,8 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public List<String> getMenuTextsInLowerCase() {
-
-        return getListTextInLowerCase(menuLinks);
-    }
-
-    public int getMenuLinksSize() {
-
-        return getListSize(menuLinks);
-    }
-
-    public List<WebElement> getLinks() {
-
-        return links;
-    }
-
-    public String getPageContext() {
-
-        return getText(mainBody);
-    }
-
-    public List<WebElement> getImages() {
-
-        return images;
-    }
-
-    public String getFirstParagraphText(){
-
-        return getText(firstParagraph);
-    }
-
-    public String getHref(WebElement element) {
-
-        return getAttribute(element, "href");
-    }
-
     public int countParagraphs() {
 
         return getListSize(pTags);
-    }
-
-    public String getColor(WebElement element) {
-
-        return element.getCssValue("color");
-    }
-
-    public String getH2HeaderColor() {
-
-        return getColor(h2Header);
     }
 }

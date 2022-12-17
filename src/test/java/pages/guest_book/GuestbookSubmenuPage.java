@@ -9,13 +9,15 @@ import java.util.List;
 
 public abstract class GuestbookSubmenuPage extends FormPage {
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a")
+    private static final String GUEST_BOOK_SUBMENU_PATH = "//ul[@id='submenu']/li/a";
+
+    @FindBy(xpath = GUEST_BOOK_SUBMENU_PATH)
     private List<WebElement> guestbookSubmenus;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='./signv2.html']")
+    @FindBy(xpath = GUEST_BOOK_SUBMENU_PATH + "[@href='./signv2.html']")
     private WebElement signGuestbook;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='./guestbookv2.html']")
+    @FindBy(xpath = GUEST_BOOK_SUBMENU_PATH + "[@href='./guestbookv2.html']")
     private WebElement readGuestbook;
 
     public GuestbookSubmenuPage(WebDriver driver) {
