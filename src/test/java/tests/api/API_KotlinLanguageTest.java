@@ -82,7 +82,7 @@ public class API_KotlinLanguageTest extends BaseTest {
                 .setUpDevTool(getDriver())
                 .captureHttpResponses(TestUtils.getBaseUrl() + expectedEndPoint);
 
-        KotlinLanguagePage kotlinLanguagePage = openBaseURL()
+        openBaseURL()
                     .clickBrowseLanguagesMenu()
                     .clickKSubmenu()
                     .clickKotlinLanguage()
@@ -92,6 +92,6 @@ public class API_KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
         Assert.assertEquals(httpResponse.get(2), TestUtils.getBaseUrl() + expectedEndPoint);
         Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStatndart);
-        Assert.assertEquals(kotlinLanguagePage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
+        Assert.assertEquals(new KotlinLanguagePage(getDriver()).getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 }

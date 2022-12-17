@@ -18,13 +18,12 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testClickStartFromHomepage() {
-
-        String urlAfterClickingStartFromHomepage =
+        String actualURL =
                 openBaseURL()
                         .clickStartMenu()
                         .getURL();
 
-        Assert.assertEquals(urlAfterClickingStartFromHomepage, getBaseUrl());
+        Assert.assertEquals(actualURL, getBaseUrl());
     }
 
     @Test
@@ -64,8 +63,13 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testTextsWithLinksOnStartPage() {
-        List<String> expectedTextsWithLinks =
-                List.of("historic information", "here", "submit your own piece of code", "guestbook", "team members");
+        final List<String> expectedTextsWithLinks = List.of(
+                "historic information",
+                "here",
+                "submit your own piece of code",
+                "guestbook",
+                "team members"
+        );
 
         List<String> actualTextsWithLinks =
                 openBaseURL()
@@ -76,7 +80,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testHistoricInformationLink_NavigatesTo_HistoryPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
@@ -96,7 +99,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testHereLink_NavigatesTo_LyricsPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
         final String expectedTitle = "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer";
 
@@ -119,7 +121,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testSubmitYourOwnPieceofCodeLink_NavigatesTo_SubmitNewLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
         final String expectedTitle = "99 Bottles of Beer | Submit new Language";
 
@@ -142,7 +143,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testGuestbookLink_NavigatesTo_GuestbookV2Page() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
         final String expectedTitle = "99 Bottles of Beer | Guestbook";
 
@@ -165,7 +165,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testTeamMembersLink_NavigatesTo_TeamPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/team.html";
         final String expectedTitle = "99 Bottles of Beer | The Team";
 

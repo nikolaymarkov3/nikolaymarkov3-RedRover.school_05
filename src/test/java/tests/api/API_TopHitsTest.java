@@ -8,6 +8,7 @@ import pages.top_lists.TopHitsPage;
 import static utils.TestUtils.getBaseUrl;
 
 public class API_TopHitsTest extends BaseTest {
+
     final static String HEADER_NAME = "Top Hits";
     final static String ACTION_TOP_HITS = "tophits.html";
 

@@ -13,12 +13,10 @@ import static utils.TestUtils.getBaseUrl;
 public class API_JTest  extends BaseTest  {
 
     final static String ACTION = "j.html";
-    final static String PAGE_CONTEXT_BEFORE_REQUEST = "";
-    final static String attribute = "xref";
 
     @Test
     public void testAttributes_DefaultValues() {
-        String PAGE_CONTEXT_BEFORE_REQUEST = "Category J\n" +
+        final String PAGE_CONTEXT_BEFORE_REQUEST = "Category J\n" +
                 "All languages starting with the letter J are shown, sorted by Language.\n" +
                 "Language Author Date Comments Rate\n" +
                 "J Roger Hui 04/20/05 6\n" +

@@ -80,6 +80,21 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return getAttribute(jSubmenu, "href");
     }
 
+    public WebElement getNSubmenu() {
+
+        return nSubmenu;
+    }
+
+    public String getNSubmenuText() {
+
+        return getText(nSubmenu);
+    }
+
+    public String getHrefN() {
+
+        return getAttribute(nSubmenu, "href");
+    }
+
     public APage clickASubmenu() {
         click(aSubmenu);
 

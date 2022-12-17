@@ -21,7 +21,7 @@ public class API_TopRatedRealTest extends BaseTest {
 
     @Test
     public void testAttributes_DefaultValues() {
-        String PAGE_CONTEXT_BEFORE_REQUEST =
+        final String PAGE_CONTEXT_BEFORE_REQUEST =
                 "Top Rated Real Languages\n" +
                 "# Language Author Date Comments Rate\n" +
                 "1. REBOL Anonymous 04/20/05 1\n" +
