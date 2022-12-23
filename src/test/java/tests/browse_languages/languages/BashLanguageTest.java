@@ -62,25 +62,7 @@ public class BashLanguageTest extends BaseTest {
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "externalBookmarking")
-    public void testBookmarkingTitle(
-            int index, String title, String href) {
-
-        BashLanguagePage bashLanguagePage = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickBSubmenu()
-                .clickBashLanguage();
-
-        List<WebElement> bookmarkList = bashLanguagePage.getExternalLinks();
-
-        String oldTitle = bashLanguagePage.getTitle();
-        String actualTitle = bashLanguagePage.clickMenu(index, bookmarkList).getTitle();
-
-        Assert.assertNotEquals(actualTitle, oldTitle);
-        Assert.assertEquals(actualTitle, title);
-    }
-
-    @Test(dataProviderClass = TestData.class, dataProvider = "externalBookmarking")
-    public void testBookmarkingUrl(
+    public void testBookmarkingNavigateToCorrespondingPage(
             int index, String title, String href) {
 
         BashLanguagePage bashLanguagePage = openBaseURL()
