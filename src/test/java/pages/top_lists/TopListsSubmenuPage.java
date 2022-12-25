@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
-import pages.start.StartPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,5 +88,4 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
 
         return actualSubmenuH2HeaderTexts;
     }
-
 }
