@@ -10,6 +10,7 @@ import pages.browse_languages.letters.YPage;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class YTest extends BaseTest {
 
@@ -93,7 +94,6 @@ public class YTest extends BaseTest {
                 .getLanguagesLinks();
 
         Assert.assertTrue(languageNames.size() > 0);
-        System.out.println(languageNames.size());
 
         int r = new Random().nextInt(languageNames.size());
 

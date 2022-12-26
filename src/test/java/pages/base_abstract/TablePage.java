@@ -101,12 +101,7 @@ public abstract class TablePage<GenericType> extends MainPage<GenericType> {
 
     public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
 
-        if (r == 0) {
-
-            return getText(elementsList.get(0));
-        }
-
-        return getText(elementsList.get(r - 1));
+        return getText(elementsList.get(r));
     }
 
     public String getHrefDeepLink() {
@@ -146,6 +141,6 @@ public abstract class TablePage<GenericType> extends MainPage<GenericType> {
     }
 
     public void clickRandomLink(int r, List<WebElement> elementsList) {
-        click(elementsList.get(r - 1));
+        click(elementsList.get(r));
     }
 }
