@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,7 +68,7 @@ public class AnastasiaYYTest extends BaseTest {
     private List<String> getElementsTextLowerCase(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
-        for (WebElement element: elementsList) {
+        for (WebElement element : elementsList) {
             textList.add(element.getText().toLowerCase());
         }
 
@@ -78,7 +78,7 @@ public class AnastasiaYYTest extends BaseTest {
     private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
-        for (WebElement element: elementsList) {
+        for (WebElement element : elementsList) {
             textList.add(element.getText());
         }
 
@@ -100,7 +100,7 @@ public class AnastasiaYYTest extends BaseTest {
 
         Assert.assertTrue(languageNames.size() > 0);
 
-        for (String languageName: languageNames) {
+        for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
@@ -120,7 +120,7 @@ public class AnastasiaYYTest extends BaseTest {
     }
 
     @Test
-    public void testVerifyH2HeaderText_TopListsMainPage()  {
+    public void testVerifyH2HeaderText_TopListsMainPage() {
 
         final String expectedResult = "Top Rated";
 
@@ -133,7 +133,7 @@ public class AnastasiaYYTest extends BaseTest {
     }
 
     @Test
-    public void testAllLanguagesOnYPageStartWithLetterY()  {
+    public void testAllLanguagesOnYPageStartWithLetterY() {
 
         openBaseURL(getDriver());
         click(BROWSE_LANGUAGES_MENU, getDriver());
@@ -143,13 +143,13 @@ public class AnastasiaYYTest extends BaseTest {
 
         Assert.assertTrue(letterYLanguages.size() > 0);
 
-        for (String languageName: letterYLanguages) {
+        for (String languageName : letterYLanguages) {
             Assert.assertTrue(languageName.contains(LETTER_Y));
         }
     }
 
-   @Test
-    public void testVerifyNumberOfLanguagesOnPageY()  {
+    @Test
+    public void testVerifyNumberOfLanguagesOnPageY() {
         final int expectedResult = 9;
         int count = 0;
 
@@ -159,7 +159,7 @@ public class AnastasiaYYTest extends BaseTest {
 
         List<String> letterYLanguages = getElementsTextLowerCase(Y_LANGUAGES_LIST, getDriver());
 
-        for (String languageName: letterYLanguages) {
+        for (String languageName : letterYLanguages) {
             if (letterYLanguages.size() > 0 && languageName.contains(LETTER_Y)) {
                 count++;
             }

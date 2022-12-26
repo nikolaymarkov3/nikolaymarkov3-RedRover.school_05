@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class TablePage<Generic> extends MainPage<Generic> {
+public abstract class TablePage<GenericType> extends MainPage<GenericType> {
 
     //Table Category
     final static String TABLE_CATEGORY_PATH = "//table[@id='category']/tbody/tr/";
@@ -75,16 +75,16 @@ public abstract class TablePage<Generic> extends MainPage<Generic> {
         return getListText(tableHeaders);
     }
 
-    public List<String> getFirstLettersFromLanguagesNames(){
+    public List<String> getFirstLettersFromLanguagesNames() {
         List<String> firstLetters = new ArrayList<>();
-        for (String languageName: getNamesInUpperCase()){
+        for (String languageName : getNamesInUpperCase()) {
             firstLetters.add(languageName.substring(0, 1));
         }
 
         return firstLetters;
     }
 
-    public List<String> getLanguageInfoFields(){
+    public List<String> getLanguageInfoFields() {
 
         return getListText(languageInfoFields);
     }
@@ -134,7 +134,7 @@ public abstract class TablePage<Generic> extends MainPage<Generic> {
 
     public int getIndexForMaxCount(List<String> list, int number) {
         if (list.size() > 0) {
-            for (int i = 0; i < list.size(); i ++) {
+            for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).equals(String.valueOf(number))) {
 
                     return i;

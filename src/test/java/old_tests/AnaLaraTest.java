@@ -1,10 +1,10 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.List;
 
@@ -38,22 +38,23 @@ public class AnaLaraTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
-        @Test
-        public void testNavigationToLyricsSubmenu_HappyPath() {
 
-            final String BASE_URL2 = "https://www.99-bottles-of-beer.net/";
-            final String EXPECTED_URL = "https://www.99-bottles-of-beer.net/lyrics.html";
+    @Test
+    public void testNavigationToLyricsSubmenu_HappyPath() {
 
-            getDriver().get(BASE_URL2);
+        final String BASE_URL2 = "https://www.99-bottles-of-beer.net/";
+        final String EXPECTED_URL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
-            WebElement searchSongLyricsSubmenu = getDriver().findElement(By.xpath(
-                    "//ul[@id='submenu']/li/a[@href='lyrics.html']")
-            );
-            searchSongLyricsSubmenu.click();
+        getDriver().get(BASE_URL2);
 
-            String ACTUAL_URL = getDriver().getCurrentUrl();
+        WebElement searchSongLyricsSubmenu = getDriver().findElement(By.xpath(
+                "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+        );
+        searchSongLyricsSubmenu.click();
 
-            Assert.assertEquals(ACTUAL_URL, EXPECTED_URL);
-        }
+        String ACTUAL_URL = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(ACTUAL_URL, EXPECTED_URL);
     }
+}
 

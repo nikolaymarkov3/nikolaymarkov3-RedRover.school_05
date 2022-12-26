@@ -1,12 +1,12 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +121,7 @@ public class NstzyaTest extends BaseTest {
         openBaseURL(getDriver());
         isDisplayed(MAIN, getDriver());
 
-        click(HISTORIC_INFO_URL,getDriver());
+        click(HISTORIC_INFO_URL, getDriver());
         String actualResult1 = getCurrentUrl(getDriver());
         Assert.assertEquals(actualResult1, expectedResult1);
         getDriver().navigate().back();

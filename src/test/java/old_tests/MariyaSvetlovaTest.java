@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 public class MariyaSvetlovaTest extends BaseTest {
 
@@ -14,11 +14,11 @@ public class MariyaSvetlovaTest extends BaseTest {
     final static By HEADER_H_1 = By.xpath("//div[@id='header']/h1");
     final static By HEADER_H_2 = By.xpath("//div[@id='header']/h2");
 
-    private void openBaseURL (WebDriver driver) {
+    private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
 
-    private WebElement getElement (By by, WebDriver driver) {
+    private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
     }
@@ -29,7 +29,7 @@ public class MariyaSvetlovaTest extends BaseTest {
 
         openBaseURL(getDriver());
 
-        Assert.assertEquals(getElement(HEADER_H_1, getDriver()).getText(),HEADER_H1_TEXT);
+        Assert.assertEquals(getElement(HEADER_H_1, getDriver()).getText(), HEADER_H1_TEXT);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class MariyaSvetlovaTest extends BaseTest {
 
         openBaseURL(getDriver());
 
-        Assert.assertEquals(getElement(HEADER_H_2, getDriver()).getText(),HEADER_H2_TEXT);
+        Assert.assertEquals(getElement(HEADER_H_2, getDriver()).getText(), HEADER_H2_TEXT);
     }
 }

@@ -1,12 +1,12 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,7 @@ public class AnastassiaITest extends BaseTest {
 
     final static By SUBMENU_INFO_LINK = By.xpath("//a[@href='info.html']");
     final static By HEADER_H_2 = By.xpath("//div[@id='main']/h2");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -58,10 +59,11 @@ public class AnastassiaITest extends BaseTest {
         return list.size();
     }
 
-    private String getText(By by,WebDriver driver){
+    private String getText(By by, WebDriver driver) {
         return getElement(by, driver).getText();
     }
-@Ignore
+
+    @Ignore
     @Test
     public void testSearchForLanguage_HappyPath() {
         final String LANGUAGE_NAME = "python";

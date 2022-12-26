@@ -1,17 +1,17 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.Collections;
 import java.util.List;
 
-public class NatalyaYanochkovaTest extends BaseTest{
+public class NatalyaYanochkovaTest extends BaseTest {
     @Test
-    public void testSearchLanguageFieldByName_HappyPath(){
+    public void testSearchLanguageFieldByName_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String Language_Python = "python";
 
@@ -31,9 +31,9 @@ public class NatalyaYanochkovaTest extends BaseTest{
         List<WebElement> languagesNameList = Collections.singletonList(getDriver().findElement(
                 By.xpath("//table[@id='category']/tbody/tr/td[1]/a")));
 
-        Assert.assertTrue(languagesNameList.size()>0);
+        Assert.assertTrue(languagesNameList.size() > 0);
 
-        for(int i=0; i<languagesNameList.size(); i++){
+        for (int i = 0; i < languagesNameList.size(); i++) {
             Assert.assertTrue(languagesNameList.get(i).getText().toLowerCase().contains(Language_Python));
         }
     }

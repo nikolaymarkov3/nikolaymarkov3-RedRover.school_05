@@ -1,11 +1,12 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +14,15 @@ import java.util.List;
 public class IrynaHryhorivTest extends BaseTest {
 
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-    final static By SEARCH_LANGUAGES_MENU =  By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
+    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
+
     private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
@@ -29,9 +32,11 @@ public class IrynaHryhorivTest extends BaseTest {
 
         return driver.findElements(by);
     }
+
     private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
+
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }

@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class SvetaKhudovaTest extends BaseTest {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
 
-        for (WebElement element : elementsList ) {
+        for (WebElement element : elementsList) {
             textList.add(element.getText().toLowerCase());
         }
 
@@ -59,7 +59,7 @@ public class SvetaKhudovaTest extends BaseTest {
     }
 
     @Test
-    public void testSearchLanguageByName_HappyPath(){
+    public void testSearchLanguageByName_HappyPath() {
         final String LANGUAGE_NAME = "python";
 
         openBaseURL(getDriver());
@@ -72,20 +72,20 @@ public class SvetaKhudovaTest extends BaseTest {
 
         Assert.assertTrue(languageNames.size() > 0);
 
-        for (String languageName : languageNames ) {
+        for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
 
     @Test
-    public void testClickStartFromHomepage_HappyPath(){
+    public void testClickStartFromHomepage_HappyPath() {
         openBaseURL(getDriver());
         click(SEARCH_START_MENU, getDriver());
         Assert.assertEquals(getDriver().getCurrentUrl(), BASE_URL);
     }
 
     @Test
-    public void testClickStartFromSearchLanguagesMenu_HappyPath(){
+    public void testClickStartFromSearchLanguagesMenu_HappyPath() {
         openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_START_MENU, getDriver());

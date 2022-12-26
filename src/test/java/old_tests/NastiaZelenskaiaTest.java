@@ -1,10 +1,10 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class NastiaZelenskaiaTest extends BaseTest {
 
         Assert.assertTrue(languageNamesList.size() > 0);
 
-        for (int i = 0; i < languageNamesList.size(); i ++) {
+        for (int i = 0; i < languageNamesList.size(); i++) {
             Assert.assertTrue(languageNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }

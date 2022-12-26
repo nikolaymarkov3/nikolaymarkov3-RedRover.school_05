@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +83,6 @@ public class AramH20Test extends BaseTest {
     }
 
 
-
     final static By BROWSE_LANGUAGES = By.xpath("//ul[@id='menu']/li[2]/a");
     final static By LETTERS = By.xpath("//ul[@id='submenu']/li");
     final static By LANGUAGE_COLUME = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
@@ -92,11 +91,12 @@ public class AramH20Test extends BaseTest {
         List<WebElement> elementsList = getListOfElements(by, driver);
         return elementsList;
     }
+
     @Test
     public void test_ABCVerifyByLetterCategoryInformation() throws InterruptedException {
         openBaseURL(getDriver());
         click(BROWSE_LANGUAGES, getDriver());
-        List<WebElement> submenuLetters = getElements(LETTERS,getDriver());
+        List<WebElement> submenuLetters = getElements(LETTERS, getDriver());
         submenuLetters.remove(0);
         List<String> submenuLettersText = getElementsText(LETTERS, getDriver());
         submenuLettersText.remove(0);
@@ -107,7 +107,7 @@ public class AramH20Test extends BaseTest {
         String expectedLetter = submenuLettersText.get(0);
 
         for (String language : languages) {
-             actualLetters.add(String.valueOf(language.charAt(0)));//
+            actualLetters.add(String.valueOf(language.charAt(0)));//
         }
         for (String letter : actualLetters) {
             Assert.assertEquals(letter, expectedLetter);

@@ -1,15 +1,16 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Ignore
 public class NikolayMarkov3Test extends BaseTest {
 
@@ -40,14 +41,15 @@ public class NikolayMarkov3Test extends BaseTest {
         getElement(by, driver).click();
     }
 
-    private void input(String text, By by, WebDriver driver){
+    private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }
-    private int getListSize(By by, WebDriver driver){
+
+    private int getListSize(By by, WebDriver driver) {
         return getListOfElements(by, driver).size();
     }
 
-    private List<String> getElementsText(By by, WebDriver driver){
+    private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
 
@@ -60,6 +62,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
         return textList;
     }
+
     @Ignore
     @Test
     public void testSearchForLanguagesByName_HappyPath() {
@@ -76,10 +79,11 @@ public class NikolayMarkov3Test extends BaseTest {
 
         Assert.assertTrue(languagesNames.size() > 0);
 
-        for (String languagesName : languagesNames){
+        for (String languagesName : languagesNames) {
             Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
         }
     }
+
     @Ignore
     @Test
     public void testSearchForLanguagesNameEmpty_HappyPath() {
@@ -92,6 +96,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
         Assert.assertTrue(languagesNames.size() == 0);
     }
+
     @Ignore
     @Test
     public void testMenuSearchSearchForLanguagesByNameJava_HappyPath() {
@@ -108,7 +113,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
         Assert.assertTrue(languagesNames.size() > 0);
 
-        for (String languagesName : languagesNames){
+        for (String languagesName : languagesNames) {
             Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
         }
     }

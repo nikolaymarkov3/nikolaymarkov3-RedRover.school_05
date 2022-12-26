@@ -1,11 +1,12 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +32,14 @@ public class HenadzBuhlakouTest extends BaseTest {
 
     private WebElement getElement(By by, WebDriver driver) {
 
-        return  driver.findElement(by);
+        return driver.findElement(by);
     }
+
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
         return driver.findElements(by);
     }
+
     private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
@@ -44,13 +47,14 @@ public class HenadzBuhlakouTest extends BaseTest {
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }
+
     private int getListSize(By by, WebDriver driver) {
 
-        return getListOfElements(by,driver).size();
+        return getListOfElements(by, driver).size();
     }
 
     private List<String> getElementsText(By by, WebDriver driver) {
-        List<WebElement> elementsList =  getListOfElements(by, driver);
+        List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
 
         for (WebElement element : elementsList) {
@@ -68,7 +72,7 @@ public class HenadzBuhlakouTest extends BaseTest {
         click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_FOR_FIELD, getDriver());
         input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON,getDriver());
+        click(GO_BUTTON, getDriver());
 
         List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
 

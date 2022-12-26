@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ElenaStratTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
-    final static By SEARCH_LANGUAGES_MENU =  By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
+    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
@@ -87,10 +87,9 @@ public class ElenaStratTest extends BaseTest {
         WebElement verifyText = getDriver().findElement(By.xpath("//div[@id = 'main']/descendant-or-self::p"));
         String actualResult = verifyText.getText();
 
-        Assert.assertEquals(actualResult,expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
 
     }
-
 
 
     @Test
@@ -102,8 +101,8 @@ public class ElenaStratTest extends BaseTest {
         WebElement verifyHeaderH1 = getDriver().findElement(By.xpath("//div[@id = 'header']/h1"));
 
         String actualResult = verifyHeaderH1.getText();
-        
-        Assert.assertEquals(actualResult,expectedResult);
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
 

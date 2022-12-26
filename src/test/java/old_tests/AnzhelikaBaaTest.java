@@ -1,5 +1,6 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,6 @@ import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +82,8 @@ public class AnzhelikaBaaTest extends BaseTest {
         }
         return textList;
     }
-       private String getAttribute(By by, String attribute) {
+
+    private String getAttribute(By by, String attribute) {
 
         return getDriver().findElement(by).getAttribute(attribute);
     }
@@ -105,21 +106,22 @@ public class AnzhelikaBaaTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
-       @Test
+
+    @Test
     public void testImages_WhenChooseTeamSubmenu_HappyPath() {
-    String attribute1 = "Picture of Gregor Scheithauer";
-    String attribute2 = "Picture of Stefan Scheler";
-    int expectedResult = 2;
+        String attribute1 = "Picture of Gregor Scheithauer";
+        String attribute2 = "Picture of Stefan Scheler";
+        int expectedResult = 2;
 
-    openBaseURL(getDriver());
+        openBaseURL(getDriver());
 
-    click(SEARCH_TEAM_SUBMENU_BUTTON, getDriver());
-    getAttribute(IMAGE_1, attribute1);
-    getAttribute(IMAGE_2, attribute2);
+        click(SEARCH_TEAM_SUBMENU_BUTTON, getDriver());
+        getAttribute(IMAGE_1, attribute1);
+        getAttribute(IMAGE_2, attribute2);
 
-    int actualResult = getListSize(IMAGES_LIST, getDriver());
+        int actualResult = getListSize(IMAGES_LIST, getDriver());
 
-    Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Ignore

@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,26 +31,32 @@ public class IrynaDanilevskaTest extends BaseTest {
     private void clickOnElement(By by, WebDriver driver) {
         driver.findElement(by).click();
     }
+
     private void clickOnElement(WebElement webElement) {
         webElement.click();
     }
+
     private WebElement getSubmenuElementLettersNumbers(String letter, WebDriver driver) {
         return driver.findElement(
                 By.xpath(String.format("//ul[@id='submenu']//a[@href='%s.html']", letter)));
     }
+
     private void clickAndEnterInputIntoField(By by, WebDriver driver, String text) {
         WebElement searchInput = driver.findElement(by);
         searchInput.click();
         searchInput.sendKeys(text);
     }
+
     private WebElement getCategoryByLetter(String letter, WebDriver driver) {
         return driver.findElement(
                 By.xpath(String.format("//h2[normalize-space()='Category %s']", letter.toUpperCase())));
     }
+
     private WebElement getTextWithSelectedLetter(String letter, WebDriver driver) {
         return driver.findElement(
                 By.xpath(String.format("//strong[normalize-space()='%s']", letter.toUpperCase())));
     }
+
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
         return driver.findElements(by);
@@ -79,7 +85,7 @@ public class IrynaDanilevskaTest extends BaseTest {
 
         openBaseURL(getDriver());
         clickOnElement(SEARCH_LANGUAGE_MENU, getDriver());
-        clickAndEnterInputIntoField(SEARCH_FIELD ,getDriver(), selectedLanguageName);
+        clickAndEnterInputIntoField(SEARCH_FIELD, getDriver(), selectedLanguageName);
         clickOnElement(GO_BUTTON, getDriver());
 
         List<String> languageNames = getElementsText(LIST_OF_LANGUAGES, getDriver());
@@ -137,7 +143,7 @@ public class IrynaDanilevskaTest extends BaseTest {
 
     @Test
     public void testContainsClickableAlphabetLettersAndRangeOfNumbers_HappyPath() {
-        final List <String> listOfLetters = List.of("0","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+        final List<String> listOfLetters = List.of("0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
                 "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
         final int quantityOfElementsExpectedResult = 27;
         int quantityOfElementsActualResult = 0;
@@ -145,7 +151,7 @@ public class IrynaDanilevskaTest extends BaseTest {
         openBaseURL(getDriver());
         clickOnElement(BROWSE_LANGUAGE_MENU, getDriver());
 
-        for (String letter: listOfLetters) {
+        for (String letter : listOfLetters) {
             WebElement submenuElement = getSubmenuElementLettersNumbers(letter.toLowerCase(), getDriver());
             Assert.assertTrue(submenuElement.isDisplayed());
             Assert.assertTrue(submenuElement.isEnabled());

@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class VictoriaLemaTest extends BaseTest {
 
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
-    final static By SEARCH_LANGUAGES_MENU =  By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
+    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
@@ -65,7 +65,7 @@ public class VictoriaLemaTest extends BaseTest {
     }
 
     private String getCurrentURL(By by, WebDriver driver) {
-        getElement(by,driver).click();
+        getElement(by, driver).click();
 
         return driver.getCurrentUrl();
     }
@@ -81,14 +81,14 @@ public class VictoriaLemaTest extends BaseTest {
         return textList;
     }
 
-    private String getText (By by, WebDriver driver) {
+    private String getText(By by, WebDriver driver) {
 
-        return getElement(by,driver).getText();
+        return getElement(by, driver).getText();
     }
 
-    private String getTextInLowerCase (By by, WebDriver driver) {
+    private String getTextInLowerCase(By by, WebDriver driver) {
 
-        return getElement(by,driver).getText().toLowerCase();
+        return getElement(by, driver).getText().toLowerCase();
     }
 
     @Test
@@ -96,10 +96,10 @@ public class VictoriaLemaTest extends BaseTest {
         final String LANGUAGE_NAME = "python";
 
         openBaseURL(getDriver());
-        click(SEARCH_LANGUAGES_MENU,getDriver());
-        click(SEARCH_FOR_FIELD,getDriver());
-        input(LANGUAGE_NAME,SEARCH_FOR_FIELD,getDriver());
-        click(GO_BUTTON,getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(SEARCH_FOR_FIELD, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
+        click(GO_BUTTON, getDriver());
 
         List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
 
@@ -116,9 +116,9 @@ public class VictoriaLemaTest extends BaseTest {
 
         openBaseURL(getDriver());
 
-        String actualResult=getCurrentURL(TOP_LISTS_ON_THE_FOOTER_MENU,getDriver());
+        String actualResult = getCurrentURL(TOP_LISTS_ON_THE_FOOTER_MENU, getDriver());
 
-        Assert.assertEquals(actualResult,expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
@@ -126,13 +126,13 @@ public class VictoriaLemaTest extends BaseTest {
         final int TOP_LANGUAGES_MINIMAL_QUANTITY = 2;
 
         openBaseURL(getDriver());
-        click(TOP_LISTS_ON_THE_FOOTER_MENU,getDriver());
+        click(TOP_LISTS_ON_THE_FOOTER_MENU, getDriver());
 
-        List<String> topRatedLanguages = getElementsText(TOP_RATED_LANGUAGES_NAMES,getDriver());
+        List<String> topRatedLanguages = getElementsText(TOP_RATED_LANGUAGES_NAMES, getDriver());
 
-        Assert.assertTrue(topRatedLanguages.size()>0);
+        Assert.assertTrue(topRatedLanguages.size() > 0);
 
-        Assert.assertTrue(topRatedLanguages.size()>=TOP_LANGUAGES_MINIMAL_QUANTITY);
+        Assert.assertTrue(topRatedLanguages.size() >= TOP_LANGUAGES_MINIMAL_QUANTITY);
     }
 
 
@@ -145,20 +145,20 @@ public class VictoriaLemaTest extends BaseTest {
         String expectedResultCategory = "esoteric language";
 
         openBaseURL(getDriver());
-        click(SUBMIT_NEW_LANGUAGE_REFERENCE,getDriver());
-        click(CATEGORY_FIELD,getDriver());
-        String categoryNames = getText(CATEGORY_NAMES,getDriver());
-        List<String> languagesCategories = getElementsText(LANGUAGES_CATEGORIES_OPTIONS,getDriver());
-        Assert.assertTrue(languagesCategories.size()>0);
-        click(ESOTERIC_LANGUAGE_OPTION,getDriver());
-        click(SUBMIT_LANGUAGE_BUTTON,getDriver());
+        click(SUBMIT_NEW_LANGUAGE_REFERENCE, getDriver());
+        click(CATEGORY_FIELD, getDriver());
+        String categoryNames = getText(CATEGORY_NAMES, getDriver());
+        List<String> languagesCategories = getElementsText(LANGUAGES_CATEGORIES_OPTIONS, getDriver());
+        Assert.assertTrue(languagesCategories.size() > 0);
+        click(ESOTERIC_LANGUAGE_OPTION, getDriver());
+        click(SUBMIT_LANGUAGE_BUTTON, getDriver());
 
-        String actualResultCategory = getText(LANGUAGES_CATEGORIES_SELECTED,getDriver());
+        String actualResultCategory = getText(LANGUAGES_CATEGORIES_SELECTED, getDriver());
 
-        Assert.assertEquals(languagesCategories.size(),expectedResultNumber);
-        Assert.assertTrue(categoryNames.contains(CATEGORY_1)&& categoryNames.contains(CATEGORY_2)
-                &&categoryNames.contains(CATEGORY_3));
-        Assert.assertEquals(actualResultCategory,expectedResultCategory);
+        Assert.assertEquals(languagesCategories.size(), expectedResultNumber);
+        Assert.assertTrue(categoryNames.contains(CATEGORY_1) && categoryNames.contains(CATEGORY_2)
+                && categoryNames.contains(CATEGORY_3));
+        Assert.assertEquals(actualResultCategory, expectedResultCategory);
     }
 
     @Test
@@ -171,15 +171,15 @@ public class VictoriaLemaTest extends BaseTest {
         final String errorReason = "incomplete input";
 
         openBaseURL(getDriver());
-        click(SUBMIT_NEW_LANGUAGE_REFERENCE,getDriver());
-        input(language,LANGUAGE_FIELD,getDriver());
-        input(author,AUTHOR_FIELD,getDriver());
-        input(email,EMAIL_FIELD,getDriver());
-        click(CATEGORY_FIELD,getDriver());
-        click(REAL_LANGUAGE_OPTION,getDriver());
-        input(code, CODE_FIELD,getDriver());
-        click(SUBMIT_LANGUAGE_BUTTON,getDriver());
-        String errorMessage = getTextInLowerCase(FULL_ERROR_MESSAGE,getDriver());
+        click(SUBMIT_NEW_LANGUAGE_REFERENCE, getDriver());
+        input(language, LANGUAGE_FIELD, getDriver());
+        input(author, AUTHOR_FIELD, getDriver());
+        input(email, EMAIL_FIELD, getDriver());
+        click(CATEGORY_FIELD, getDriver());
+        click(REAL_LANGUAGE_OPTION, getDriver());
+        input(code, CODE_FIELD, getDriver());
+        click(SUBMIT_LANGUAGE_BUTTON, getDriver());
+        String errorMessage = getTextInLowerCase(FULL_ERROR_MESSAGE, getDriver());
 
         Assert.assertNotNull(errorMessage);
 

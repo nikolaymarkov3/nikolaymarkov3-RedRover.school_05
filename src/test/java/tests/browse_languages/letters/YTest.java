@@ -3,22 +3,18 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.YabasicLanguagePage;
 import pages.browse_languages.languages.YacasLanguagePage;
-import pages.browse_languages.letters.JPage;
 import pages.browse_languages.letters.YPage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class YTest extends BaseTest {
 
     @Test
-    public void testAllLanguagesOnYPageStartWithLetterY()  {
+    public void testAllLanguagesOnYPageStartWithLetterY() {
         final String letterY = "y";
 
         List<String> listYLanguages =
@@ -29,13 +25,13 @@ public class YTest extends BaseTest {
 
         Assert.assertTrue(listYLanguages.size() > 0);
 
-        for (String languageName: listYLanguages) {
+        for (String languageName : listYLanguages) {
             Assert.assertTrue(languageName.contains(letterY));
         }
     }
 
     @Test
-    public void testNumberOfLanguagesOnPageY()  {
+    public void testNumberOfLanguagesOnPageY() {
         final int expectedResult = 9;
 
         List<String> listYLanguages =

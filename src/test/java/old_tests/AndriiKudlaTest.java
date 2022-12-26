@@ -1,10 +1,10 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class AndriiKudlaTest extends BaseTest {
 
         Assert.assertTrue(languagesNamesList.size() > 0);
 
-        for (int i = 0; i < languagesNamesList.size(); i ++) {
+        for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }

@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class AndreiMironauTest extends BaseTest {
         driver.get(BASE_URL);
     }
 
-    private WebElement getElement (By by, WebDriver driver) {
+    private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
     }

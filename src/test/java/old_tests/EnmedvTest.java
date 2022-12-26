@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,23 +21,27 @@ public class EnmedvTest extends BaseTest {
     final static By H_2_PRIVACY_HEADER = By.xpath("//div[@id = 'main']/h2");
     final static By H_3_OLIVER_SCHADE_IN_HEADER = By.xpath("//div[@id = 'main']/h3");
     final static By TEXT_EMAIL_ADRESS_ON_THE_PAGE = By.xpath("//div[@id = 'main']/p");
+
     private void openBaseURL(WebDriver driver) {
 
         driver.get(BASE_URL);
     }
+
     private WebElement getElement(By by, WebDriver driver) {
 
-       return driver.findElement(by);
+        return driver.findElement(by);
     }
+
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
         return driver.findElements(by);
     }
 
-    private void click(By by , WebDriver driver) {
+    private void click(By by, WebDriver driver) {
 
         getElement(by, driver).click();
     }
+
     private void input(String text, By by, WebDriver driver) {
 
         getElement(by, driver).sendKeys(text);
@@ -52,25 +56,27 @@ public class EnmedvTest extends BaseTest {
 
         return getElement(by, driver).getText();
     }
-     private List<String> getElementsText(By by, WebDriver driver) {
-       List<WebElement> elementsList = getListOfElements(by, driver);
-       List<String> textList = new ArrayList<>();
+
+    private List<String> getElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
 
 //       for (int i = 0; i < elementsList.size(); i ++) {
 //           textList.add(elementsList.get(i).getText().toLowerCase());
 //       }   тоже самое, что и цикл for ниже
 
-         for (WebElement element : elementsList) {
-             textList.add(element.getText().toLowerCase());
-         }
-       return textList;
-     }
+        for (WebElement element : elementsList) {
+            textList.add(element.getText().toLowerCase());
+        }
+        return textList;
+    }
+
     @Test
     public void testSearchLanguageByName_HappyPath() {
         final String LANGUAGE_NAME = "python";
 
         openBaseURL(getDriver());
-        click(SEARCH_LANGUAGES_MENU ,getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_FOR_FIELD, getDriver());
         input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());

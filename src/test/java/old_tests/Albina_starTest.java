@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,7 +149,7 @@ public class Albina_starTest extends BaseTest {
 
         List<WebElement> elements = getDriver().findElements(PLEASE_NOTE_LIST);
 
-        Assert.assertTrue(elements.size() >0);
+        Assert.assertTrue(elements.size() > 0);
 
         int actualQuantityOfPleaseNote = getListSize(PLEASE_NOTE_LIST, getDriver());
         Assert.assertEquals(actualQuantityOfPleaseNote, expectedQuantityOfPleaseNote);

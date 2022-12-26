@@ -1,11 +1,11 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,16 +43,16 @@ public class MariaYanuTest extends BaseTest {
         return driver.findElements(by);
     }
 
-    public int getSizeListOfElements(By by){
+    public int getSizeListOfElements(By by) {
 
         return getListOfElements(by, getDriver()).size();
     }
 
     public List<String> getTextListOfElements(By by, WebDriver driver) {
-        List<WebElement> elementsList = getListOfElements(by,driver);
+        List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textElements = new ArrayList<>();
 
-        for(WebElement element : elementsList) {
+        for (WebElement element : elementsList) {
             textElements.add(element.getText().toLowerCase());
         }
 
@@ -65,7 +65,7 @@ public class MariaYanuTest extends BaseTest {
         openBaseUrl(getDriver());
         click(START_LINK);
 
-        Assert.assertEquals(getDriver().getCurrentUrl(),START_URL);
+        Assert.assertEquals(getDriver().getCurrentUrl(), START_URL);
 
         String currentHeader = getElementText(HEADER, getDriver());
 
@@ -80,11 +80,11 @@ public class MariaYanuTest extends BaseTest {
         int amountOfHeaderLinks = getSizeListOfElements(HEADER_LINKS);
 
         Assert.assertTrue(amountOfHeaderLinks > 0);
-        Assert.assertEquals(amountOfHeaderLinks,AMOUNT_HEADER_LINKS);
+        Assert.assertEquals(amountOfHeaderLinks, AMOUNT_HEADER_LINKS);
 
         List<String> textOfHeaderLinks = getTextListOfElements(HEADER_LINKS, getDriver());
 
-        for (int i = 0; i < TEXT_OF_HEADER_LINKS.length; i++){
+        for (int i = 0; i < TEXT_OF_HEADER_LINKS.length; i++) {
 
             Assert.assertEquals(textOfHeaderLinks.get(i), TEXT_OF_HEADER_LINKS[i].toLowerCase());
         }

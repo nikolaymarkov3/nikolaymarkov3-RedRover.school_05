@@ -1,12 +1,11 @@
 package old_tests;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
-
+import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import base.BaseTest;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +18,11 @@ public class MariaKuzhTest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
     final static By BUTTON_TOP_LISTS = By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']");
+
     private void openBaseUrl(WebDriver driver) {
         driver.get(BASE_URL);
     }
+
     private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
@@ -36,6 +37,7 @@ public class MariaKuzhTest extends BaseTest {
 
         return driver.findElements(by);
     }
+
     private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
@@ -44,7 +46,7 @@ public class MariaKuzhTest extends BaseTest {
         getElement(by, driver).sendKeys(text);
     }
 
-    private int getListSize(By by, WebDriver driver){
+    private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
     }
@@ -58,26 +60,21 @@ public class MariaKuzhTest extends BaseTest {
         }
         return textList;
     }
-    private String getCurrentUrl(WebDriver driver){
+
+    private String getCurrentUrl(WebDriver driver) {
         return driver.getCurrentUrl();
     }
-    private Boolean wordContains(String a, String b){
+
+    private Boolean wordContains(String a, String b) {
         boolean wordContains;
-        if (a.contains(b)) {
-            wordContains = true;
-        } else {
-            wordContains = false;
-        }
+        wordContains = a.contains(b);
 
         return wordContains;
     }
+
     private Boolean urlContains(String a, String b) {
         Boolean urlContains;
-        if (a != b) {
-            urlContains = true;
-        } else {
-            urlContains = false;
-        }
+        urlContains = a != b;
 
         return urlContains;
     }
@@ -91,7 +88,7 @@ public class MariaKuzhTest extends BaseTest {
         openBaseUrl(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_FOR_FIELD, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIELD,getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
 
         List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
@@ -111,7 +108,7 @@ public class MariaKuzhTest extends BaseTest {
         openBaseUrl(getDriver());
         String actualResult = getElementText(BUTTON_TOP_LISTS, getDriver());
 
-        Assert.assertEquals(actualResult,expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
@@ -123,13 +120,13 @@ public class MariaKuzhTest extends BaseTest {
 
         String newUrl = getCurrentUrl(getDriver());
 
-        Boolean actualResultWord = wordContains(newUrl,TopLists);
+        Boolean actualResultWord = wordContains(newUrl, TopLists);
         Boolean expectedResultWord = true;
-        Assert.assertEquals(actualResultWord,expectedResultWord);
+        Assert.assertEquals(actualResultWord, expectedResultWord);
 
-        Boolean actualResultNewUrl = urlContains(newUrl,BASE_URL);
+        Boolean actualResultNewUrl = urlContains(newUrl, BASE_URL);
         Boolean expectedResultNewUrl = true;
-        Assert.assertEquals(actualResultNewUrl,expectedResultNewUrl);
+        Assert.assertEquals(actualResultNewUrl, expectedResultNewUrl);
     }
 
     @Test

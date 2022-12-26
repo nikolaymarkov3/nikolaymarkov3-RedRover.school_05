@@ -1,12 +1,12 @@
 package old_tests;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class VerafesTest extends BaseTest {
     final static By BROWSE_LANGUAGES_MENU = By.xpath("//div[@id='navigation']//a[@href='/abc.html']");
     final static By SUBMENU_J = By.xpath("//div[@id='navigation']//a[@href='j.html']");
 
-    private void openBaseURL(WebDriver driver)  {
+    private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
 
@@ -99,7 +99,7 @@ public class VerafesTest extends BaseTest {
     }
 
     @Test
-    public void testSubmenuInfo_VerifyLabelText_HappyPath(){
+    public void testSubmenuInfo_VerifyLabelText_HappyPath() {
         String expectedResult = "History";
 
         openBaseURL(getDriver());
@@ -110,7 +110,7 @@ public class VerafesTest extends BaseTest {
     }
 
     @Test
-    public void testSubmenuInfo_VerifyLinkText_HappyPath(){
+    public void testSubmenuInfo_VerifyLinkText_HappyPath() {
         String attribute = "href";
         String expectedResult = "info.html";
 
@@ -122,7 +122,7 @@ public class VerafesTest extends BaseTest {
     }
 
     @Test
-    public void testClickOnLinkSubmenuInfo(){
+    public void testClickOnLinkSubmenuInfo() {
         By infoTitle = By.xpath("//*[@id='main']/h2");
         String expectedResultURL = INFO_URL;
         String expectedResultTitle = "History";

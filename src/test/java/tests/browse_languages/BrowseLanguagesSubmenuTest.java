@@ -16,7 +16,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
     public void testASubmenuLink() {
         final String expectedLink = "https://www.99-bottles-of-beer.net/a.html";
 
-        String actualLink =  openBaseURL()
+        String actualLink = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickASubmenu()
                 .getURL();
@@ -40,7 +40,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         Assert.assertNotEquals(oldURL, nPage.getURL());
 
         String actualSymbol = nPage.getNSubmenuText();
-        String actualLink = nPage.getHrefN();
+        String actualLink = nPage.getNHref();
 
         Assert.assertEquals(actualSymbol, expectedSymbol);
         Assert.assertEquals(actualLink, expectedLink);
@@ -48,7 +48,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test
     public void testTextAndLinksSubmenu() {
-        final List<String> expectedlettersSubmenu = List.of("0-9","A", "B", "C", "D", "E", "F", "G", "H", "I"
+        final List<String> expectedlettersSubmenu = List.of("0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I"
                 , "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
         BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
@@ -68,10 +68,10 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
         String oldURL = abcPage.getURL();
         String oldTitle = abcPage.getTitle();
-        String actualSymbol =  abcPage.getTextSymbol(index);
+        String actualSymbol = abcPage.getTextSymbol(index);
         String actualURLHref = abcPage.getHref(index);
 
-        abcPage.clickOnSymdolSubmenu(index);
+        abcPage.clickOnSymbolSubmenu(index);
 
         String actualURL = getDriver().getCurrentUrl();
         String actualTitle = getDriver().getTitle();
