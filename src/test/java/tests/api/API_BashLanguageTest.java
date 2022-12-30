@@ -153,7 +153,6 @@ public class API_BashLanguageTest extends BaseTest {
                 }
             }
         }
-
         Assert.assertEquals(actualWorkingImagesCount, expectedWorkingImagesCount);
     }
 }
