@@ -90,6 +90,9 @@ public abstract class MainPage<GenericType> extends BasePage {
     @FindBy(xpath = "//div[@id='main']/p")
     private List<WebElement> pTags;
 
+    @FindBy(xpath = "//div[@id='main']/table/tbody/tr/td[1]")
+    private List<WebElement> languageInfoDate;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -262,5 +265,10 @@ public abstract class MainPage<GenericType> extends BasePage {
     public int countParagraphs() {
 
         return getListSize(pTags);
+    }
+
+    public List<String> languageInfoDates(){
+
+        return getListText(languageInfoDate);
     }
 }
