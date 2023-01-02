@@ -9,7 +9,7 @@
 <h1>API testing</h1>
 <p>For testing requests and responses&nbsp;<strong>DevTools&nbsp;type property</strong> was used&nbsp;</p>
 <blockquote>
-<pre>&nbsp; &nbsp; DevTools devTools;<br /><br /></pre>
+<pre>&nbsp; DevTools devTools;<br /><br /></pre>
 </blockquote>
 <p><strong>setUpDevTool(WebDriver driver)&nbsp;</strong> method was created in the class CaptureNetworkTraffic &nbsp;to capture the traffic:</p>
 <blockquote>
