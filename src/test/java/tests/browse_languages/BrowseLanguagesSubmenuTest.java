@@ -52,4 +52,29 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         Assert.assertEquals(actualURL, url);
         Assert.assertEquals(actualTitle, title);
     }
+
+    @Test(dependsOnMethods = "testTextAndLinksSubmenu",
+            dataProviderClass = TestData.class, dataProvider = "lettersSubmenu")
+    public void testFooterLetterSubmenusNavigateToCorrespondingPages(
+            int index, String symbol, String url, String title) {
+
+        ABCPage abcPage = openBaseURL().clickBrowseLanguagesFooterMenu();
+
+        List<WebElement> lettersList = abcPage.getSubmenus();
+
+        String oldURL = abcPage.getURL();
+        String oldTitle = abcPage.getTitle();
+        String actualSymbol = abcPage.getTextSymbol(index);
+
+        String actualUrl = abcPage.clickMenu(index, lettersList).getURL();
+        String actualTitle = abcPage.clickMenu(index, lettersList).getTitle();
+
+        if (index != 1) {
+            Assert.assertNotEquals(actualUrl, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+        Assert.assertEquals(actualUrl, url);
+        Assert.assertEquals(actualTitle, title);
+        Assert.assertEquals(actualSymbol, symbol);
+    }
 }
