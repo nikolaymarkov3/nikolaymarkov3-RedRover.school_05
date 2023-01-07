@@ -47,7 +47,7 @@ public class StartSubmenuTest extends BaseTest {
 
     @Test(dataProviderClass = TestData.class, dataProvider = "StartSubmenu")
     public void testFooterStartSubmenusNavigateToCorrespondingPages(
-            int index, String url, String title) {
+            int index, String submenuText, String urlHref, String url, String title) {
 
         StartSubmenuPage startSubmenuPage = openBaseURL()
                 .clickStartFooterMenu();
@@ -68,6 +68,53 @@ public class StartSubmenuTest extends BaseTest {
 
         Assert.assertNotEquals(actualUrl, oldUrl);
         Assert.assertNotEquals(actualTitle, oldTitle);
+
+        Assert.assertEquals(actualUrl, url);
+        Assert.assertEquals(actualTitle, title);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "StartSubmenu")
+    public void testStartSubmenuNavigateToCorrespondingPages(
+            int index, String submenuText, String urlHref, String url, String title) {
+
+        StartSubmenuPage startSubmenuPage =
+                openBaseURL();
+
+        List<WebElement> startSubmenus =
+                startSubmenuPage
+                        .getStartSubmenus();
+
+        String oldUrl = startSubmenuPage.getURL();
+        String oldTitle = startSubmenuPage.getTitle();
+        String oldH2Text = startSubmenuPage.getH2HeaderText();
+
+        String actualUrl =
+                startSubmenuPage
+                        .clickMenu(index, startSubmenus)
+                        .getURL();
+        String actualTitle =
+                startSubmenuPage
+                        .clickMenu(index, startSubmenus)
+                        .getTitle();
+        String actualH2Text =
+                startSubmenuPage
+                        .clickMenu(index, startSubmenus)
+                        .getH2HeaderText();
+        String actualNameSubmenu =
+                startSubmenuPage
+                        .getTextStartSubmenu(index);
+        String actualURLHref =
+                startSubmenuPage
+                        .getHref(index);
+
+        Assert.assertEquals(actualNameSubmenu, submenuText);
+        Assert.assertEquals(actualURLHref, urlHref);
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualUrl, oldUrl);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+            Assert.assertNotEquals(actualH2Text, oldH2Text);
+        }
 
         Assert.assertEquals(actualUrl, url);
         Assert.assertEquals(actualTitle, title);
