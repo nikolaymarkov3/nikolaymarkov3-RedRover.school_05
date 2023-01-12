@@ -4,6 +4,10 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public abstract class FormPage<GenericType> extends MainPage<GenericType> {
 
@@ -19,8 +23,15 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     WebElement urlIcon;
 
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+
     public FormPage(WebDriver driver) {
         super(driver);
+    }
+
+    WebDriverWait getWait() {
+
+        return wait;
     }
 
     public void inputName(String text) {
@@ -50,6 +61,14 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     public void acceptAlert(Alert alert, String text) {
         alert.sendKeys(text);
         alert.accept();
+        alert.accept();
+    }
+
+    public void acceptTwoAlerts(String text1, String text2) {
+        Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
+        alert.sendKeys(text1);
+        alert.accept();
+        alert.sendKeys(text2);
         alert.accept();
     }
 }

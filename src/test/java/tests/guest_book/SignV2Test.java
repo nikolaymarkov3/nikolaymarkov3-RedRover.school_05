@@ -50,4 +50,27 @@ public class SignV2Test extends BaseTest {
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }
+
+    @Test
+    public void testAlertTextIsDisplayedOnMessageFieldAfterClickSubmitButton() {
+        final String text1 = "FirstText";
+        final String text2 = "SecondText";
+        final String expectedMessageText = "[url=FirstText]SecondText[/url]";
+
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickUrlIcon();
+
+        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+
+        signV2Page.acceptTwoAlerts(text1, text2);
+
+        String actualMessageText =
+                signV2Page
+                        .clickSubmitButton()
+                        .getMessageText();
+
+        Assert.assertEquals(actualMessageText, expectedMessageText);
+    }
 }

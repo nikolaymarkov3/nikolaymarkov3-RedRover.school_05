@@ -31,4 +31,9 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
 
         return this;
     }
+
+    public String getMessageText() {
+
+        return getText(message);
+    }
 }
