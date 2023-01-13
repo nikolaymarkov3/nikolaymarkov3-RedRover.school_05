@@ -125,4 +125,41 @@ public class SignV2Test extends BaseTest {
 
         Assert.assertEquals(actualIcon, expectedIcon);
     }
+
+    @Test
+    public void testTextInEmailAlertAfterClickEmailIcon() {
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
+
+        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+        Assert.assertEquals(signV2Page.getAlertText(alert), "Enter the email address you want to add.");
+    }
+
+    @Test
+    public void testTextInTextAreaAfterClickSubmitButton() {
+        final String text = "guest@gmail.com";
+        final String expectedMessageText = "[email]guest@gmail.com[/email]";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
+
+        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+
+        signV2Page.acceptAlert(text);
+        String actualMessageText =
+                signV2Page
+                        .clickSubmitButton()
+                        .getMessageText();
+
+        Assert.assertEquals(actualMessageText, expectedMessageText);
+    }
 }

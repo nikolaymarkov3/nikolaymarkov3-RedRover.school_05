@@ -26,6 +26,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     @FindBy(xpath = "//a/img[@src='/images/bb/bbitalic.gif']")
     private WebElement italicIcon;
 
+    @FindBy(xpath = "//a/img[@src='/images/bb/bbemail.gif']")
+    WebElement emailIcon;
+
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 
     public FormPage(WebDriver driver) {
@@ -82,5 +85,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         alert.accept();
         alert.sendKeys(text2);
         alert.accept();
+    }
+
+    public void clickEmailIcon() {
+        click(emailIcon);
     }
 }
