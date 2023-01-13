@@ -23,6 +23,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     WebElement urlIcon;
 
+    @FindBy(xpath = "//a/img[@src='/images/bb/bbitalic.gif']")
+    private WebElement italicIcon;
+
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 
     public FormPage(WebDriver driver) {
@@ -58,9 +61,18 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         return alert.getText();
     }
 
-    public void acceptAlert(Alert alert, String text) {
+    public void clickItalicIcon() {
+        click(italicIcon);
+    }
+
+    public String getItalicIcon() {
+
+        return italicIcon.getAttribute("src");
+    }
+
+    public void acceptAlert(String text) {
+        Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
         alert.sendKeys(text);
-        alert.accept();
         alert.accept();
     }
 

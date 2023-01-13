@@ -73,4 +73,56 @@ public class SignV2Test extends BaseTest {
 
         Assert.assertEquals(actualMessageText, expectedMessageText);
     }
+
+    @Test
+    public void testMessageAlertText_WhenItalicButtonClicked() {
+
+        final String message = "Italic text";
+        final String expectedAlertItalicMessage =
+                "Enter the text that you want to make italic.";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickItalicIcon();
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+        String actualItalicAlertMessage = signGuestbookPage.getAlertText(alert);
+
+        Assert.assertEquals(actualItalicAlertMessage, expectedAlertItalicMessage);
+    }
+
+    @Test
+    public void testItalicTextInMessage() {
+        final String text = "Italic text";
+        final String expectedItalicMessage = "[i]Italic text[/i]";
+
+        SignGuestbookPage signGuestbookPage =
+                openBaseURL()
+                        .clickGuestbookMenu()
+                        .clickSignGuestbookSubmenu();
+        signGuestbookPage.clickItalicIcon();
+        signGuestbookPage.acceptAlert(text);
+
+        String actualItalicMessage = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
+    }
+
+    @Test
+    public void testItalicTextIcon() {
+        final String expectedIcon = "https://www.99-bottles-of-beer.net/images/bb/bbitalic.gif";
+
+        String actualIcon = openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .getItalicIcon();
+
+        Assert.assertEquals(actualIcon, expectedIcon);
+    }
 }
