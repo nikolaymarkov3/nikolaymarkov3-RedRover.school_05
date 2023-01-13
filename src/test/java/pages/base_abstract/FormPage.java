@@ -35,7 +35,7 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         super(driver);
     }
 
-    WebDriverWait getWait() {
+    public WebDriverWait getWait() {
 
         return wait;
     }
@@ -59,7 +59,8 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         click(urlIcon);
     }
 
-    public String getAlertText(Alert alert) {
+    public String getAlertText() {
+        Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
 
         return alert.getText();
     }

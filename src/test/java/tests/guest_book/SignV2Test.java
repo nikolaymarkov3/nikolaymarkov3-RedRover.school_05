@@ -1,31 +1,27 @@
 package tests.guest_book;
 
 import base.BaseTest;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.guest_book.SignGuestbookPage;
-
-import java.time.Duration;
 
 public class SignV2Test extends BaseTest {
 
     @Test
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert() {
 
+        final String expectedURLMessage = "Enter the URL for the link you want to add.";
+
         openBaseURL()
                 .clickGuestbookMenu()
                 .clickSignGuestbookSubmenu()
                 .clickUrlIcon();
 
-        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String actualURLMessage = signGuestbookPage.getAlertText();
 
-        Assert.assertEquals(signV2Page.getAlertText(alert), "Enter the URL for the link you want to add.");
+        Assert.assertEquals(actualURLMessage, expectedURLMessage);
     }
 
     @Test
@@ -62,12 +58,12 @@ public class SignV2Test extends BaseTest {
                 .clickSignGuestbookSubmenu()
                 .clickUrlIcon();
 
-        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
-        signV2Page.acceptTwoAlerts(text1, text2);
+        signGuestbookPage.acceptTwoAlerts(text1, text2);
 
         String actualMessageText =
-                signV2Page
+                signGuestbookPage
                         .clickSubmitButton()
                         .getMessageText();
 
@@ -77,7 +73,6 @@ public class SignV2Test extends BaseTest {
     @Test
     public void testMessageAlertText_WhenItalicButtonClicked() {
 
-        final String message = "Italic text";
         final String expectedAlertItalicMessage =
                 "Enter the text that you want to make italic.";
 
@@ -86,11 +81,9 @@ public class SignV2Test extends BaseTest {
                 .clickSignGuestbookSubmenu()
                 .clickItalicIcon();
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-
         SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
-        String actualItalicAlertMessage = signGuestbookPage.getAlertText(alert);
+
+        String actualItalicAlertMessage = signGuestbookPage.getAlertText();
 
         Assert.assertEquals(actualItalicAlertMessage, expectedAlertItalicMessage);
     }
@@ -131,17 +124,19 @@ public class SignV2Test extends BaseTest {
     @Test
     public void testTextInEmailAlertAfterClickEmailIcon() {
 
+        final String expectedEmailMessage =
+                "Enter the email address you want to add.";
+
         openBaseURL()
                 .clickGuestbookMenu()
                 .clickSignGuestbookSubmenu()
                 .clickEmailIcon();
 
-        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String actualEmailMessage = signGuestbookPage.getAlertText();
 
-        Assert.assertEquals(signV2Page.getAlertText(alert), "Enter the email address you want to add.");
+        Assert.assertEquals(actualEmailMessage, expectedEmailMessage);
     }
 
     @Test
@@ -154,14 +149,38 @@ public class SignV2Test extends BaseTest {
                 .clickSignGuestbookSubmenu()
                 .clickEmailIcon();
 
-        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
-        signV2Page.acceptAlert(text);
+        signGuestbookPage.acceptAlert(text);
         String actualMessageText =
-                signV2Page
+                signGuestbookPage
                         .clickSubmitButton()
                         .getMessageText();
 
         Assert.assertEquals(actualMessageText, expectedMessageText);
+    }
+
+    @Test
+    public void testEmailTextInTextAreaAfterClickSubmitButton()  {
+        final String testEmail = "test@test.text";
+        final String expectedAlertEmailMessage =
+                "Enter the email address you want to add.";
+        final String expectedMessageInTextArea = "[email]test@test.text[/email]";
+
+        SignGuestbookPage signGuestbookPage =
+                openBaseURL()
+                        .clickGuestBookFooterMenu()
+                        .clickSignGuestbookSubmenu();
+
+        signGuestbookPage.clickEmailIcon();
+        String actualAlertEmailMessage = signGuestbookPage.getAlertText();
+        signGuestbookPage.acceptAlert(testEmail);
+
+        String actualMessageInTextArea = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertEquals(actualAlertEmailMessage, expectedAlertEmailMessage);
+        Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
     }
 }
