@@ -100,11 +100,13 @@ public class SignV2Test extends BaseTest {
         final String text = "Italic text";
         final String expectedItalicMessage = "[i]Italic text[/i]";
 
-        SignGuestbookPage signGuestbookPage =
-                openBaseURL()
-                        .clickGuestbookMenu()
-                        .clickSignGuestbookSubmenu();
-        signGuestbookPage.clickItalicIcon();
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickItalicIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
         signGuestbookPage.acceptAlert(text);
 
         String actualItalicMessage = signGuestbookPage
