@@ -162,23 +162,28 @@ public class SignV2Test extends BaseTest {
 
     @Test
     public void testEmailTextInTextAreaAfterClickSubmitButton()  {
-        final String testEmail = "test@test.text";
+        final String testEmail = "test@test.test";
         final String expectedAlertEmailMessage =
                 "Enter the email address you want to add.";
-        final String expectedMessageInTextArea = "[email]test@test.text[/email]";
+        final String expectedMessageInTextArea = "[email]test@test.test[/email]";
 
-        SignGuestbookPage signGuestbookPage =
-                openBaseURL()
-                        .clickGuestBookFooterMenu()
-                        .clickSignGuestbookSubmenu();
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
 
-        signGuestbookPage.clickEmailIcon();
-        String actualAlertEmailMessage = signGuestbookPage.getAlertText();
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        String actualAlertEmailMessage =
+                signGuestbookPage
+                        .getAlertText();
+
         signGuestbookPage.acceptAlert(testEmail);
 
-        String actualMessageInTextArea = signGuestbookPage
-                .clickSubmitButton()
-                .getMessageText();
+        String actualMessageInTextArea =
+                signGuestbookPage
+                        .clickSubmitButton()
+                        .getMessageText();
 
         Assert.assertEquals(actualAlertEmailMessage, expectedAlertEmailMessage);
         Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
