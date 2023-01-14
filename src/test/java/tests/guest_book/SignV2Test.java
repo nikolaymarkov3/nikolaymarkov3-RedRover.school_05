@@ -183,4 +183,21 @@ public class SignV2Test extends BaseTest {
         Assert.assertEquals(actualAlertEmailMessage, expectedAlertEmailMessage);
         Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
     }
+
+    @Test
+    public void testAlertTextWhenClickBoldIcon() {
+
+        final String expectedAlertText = "Enter the text that you want to make bold.";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickBoldIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        String actualAlertText = signGuestbookPage.getAlertText();
+
+        Assert.assertEquals(actualAlertText, expectedAlertText);
+    }
 }
