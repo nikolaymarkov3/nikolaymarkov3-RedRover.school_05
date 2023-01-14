@@ -57,6 +57,7 @@ public class StartSubmenuTest extends BaseTest {
 
         String oldUrl = startSubmenuPage.getURL();
         String oldTitle = startSubmenuPage.getTitle();
+        String oldH2Text = startSubmenuPage.getH2HeaderText();
 
         String actualUrl = startSubmenuPage
                 .clickMenu(index, startSubmenus)
@@ -66,8 +67,22 @@ public class StartSubmenuTest extends BaseTest {
                 .clickMenu(index, startSubmenus)
                 .getTitle();
 
+        String actualH2text = startSubmenuPage
+                .clickMenu(index, startSubmenus)
+                        .getH2HeaderText();
+
+        String actualNameSubmenu = startSubmenuPage
+                .getTextStartSubmenu(index);
+
+        String actualURLHref = startSubmenuPage
+                .getHref(index);
+
+        Assert.assertEquals(actualNameSubmenu, submenuText);
+        Assert.assertEquals(actualURLHref, urlHref);
+
         Assert.assertNotEquals(actualUrl, oldUrl);
         Assert.assertNotEquals(actualTitle, oldTitle);
+        Assert.assertNotEquals(actualH2text, oldH2Text);
 
         Assert.assertEquals(actualUrl, url);
         Assert.assertEquals(actualTitle, title);
