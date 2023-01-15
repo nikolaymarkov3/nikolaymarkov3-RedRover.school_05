@@ -159,7 +159,7 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
-    public void testEmailTextInTextAreaAfterClickSubmitButton() {
+    public void testEmailTextInTextAreaAfterClickSubmitButton()  {
         final String testEmail = "test@test.test";
         final String expectedAlertEmailMessage =
                 "Enter the email address you want to add.";
@@ -189,7 +189,6 @@ public class SignGuestbookTest extends BaseTest {
 
     @Test
     public void testAlertTextWhenClickBoldIcon() {
-
         final String expectedAlertText = "Enter the text that you want to make bold.";
 
         openBaseURL()
@@ -205,7 +204,7 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
-    public void testBoldTextInMessageField() {
+    public void  testBoldTextInMessageField() {
         final String boldText = "Bold Text";
         final String expectedBoldMessage = "[b]Bold Text[/b]";
 
