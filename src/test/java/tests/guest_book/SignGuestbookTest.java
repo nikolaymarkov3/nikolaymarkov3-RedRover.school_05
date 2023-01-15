@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.guest_book.SignGuestbookPage;
 
-public class SignV2Test extends BaseTest {
+public class SignGuestbookTest extends BaseTest {
 
     @Test
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert() {
