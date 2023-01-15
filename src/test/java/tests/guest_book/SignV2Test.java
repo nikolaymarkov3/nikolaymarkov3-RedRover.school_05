@@ -161,7 +161,7 @@ public class SignV2Test extends BaseTest {
     }
 
     @Test
-    public void testEmailTextInTextAreaAfterClickSubmitButton()  {
+    public void testEmailTextInTextAreaAfterClickSubmitButton() {
         final String testEmail = "test@test.test";
         final String expectedAlertEmailMessage =
                 "Enter the email address you want to add.";
@@ -207,7 +207,7 @@ public class SignV2Test extends BaseTest {
     }
 
     @Test
-    public void  testBoldTextInMessageField() {
+    public void testBoldTextInMessageField() {
         final String boldText = "Bold Text";
         final String expectedBoldMessage = "[b]Bold Text[/b]";
 
@@ -225,5 +225,24 @@ public class SignV2Test extends BaseTest {
                 .getMessageText();
 
         Assert.assertEquals(actualBoldMessage, expectedBoldMessage);
+    }
+
+    @Test
+    public void testUnderLineTextMessage() {
+        final String expectedText = "underlined test message";
+        final String expectedAlertText =
+                "Error: Please enter at least a message, your email address and the security code.";
+
+        SignGuestbookPage signGuestbookPage =
+                openBaseURL()
+                        .clickGuestbookMenu()
+                        .clickSignGuestbookSubmenu();
+
+        signGuestbookPage.clickUnderlineIcon();
+        signGuestbookPage.acceptAlert(expectedText);
+        signGuestbookPage.clickSubmitButton();
+
+        Assert.assertTrue(signGuestbookPage.getMessageText().contentEquals("[u]" + expectedText + "[/u]"));
+        Assert.assertTrue(signGuestbookPage.getErrorMessageText().contentEquals(expectedAlertText));
     }
 }

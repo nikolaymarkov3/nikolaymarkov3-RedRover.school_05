@@ -12,22 +12,22 @@ import java.time.Duration;
 public abstract class FormPage<GenericType> extends MainPage<GenericType> {
 
     @FindBy(name = "name")
-    WebElement name;
+    private WebElement name;
 
     @FindBy(name = "email")
-    WebElement email;
+    private WebElement email;
 
     @FindBy(xpath = "//div[@id='main']/p")
     private WebElement errorMessage;
 
     @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
-    WebElement urlIcon;
+    private WebElement urlIcon;
 
     @FindBy(xpath = "//a/img[@src='/images/bb/bbitalic.gif']")
     private WebElement italicIcon;
 
     @FindBy(xpath = "//a/img[@src='/images/bb/bbemail.gif']")
-    WebElement emailIcon;
+    private WebElement emailIcon;
 
     @FindBy(xpath = "//a/img[@src='/images/bb/bbbold.gif']")
     private WebElement boldIcon;
