@@ -226,7 +226,7 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
-    public void testUnderLineTextMessage() {
+    public void testUnderlineTextMessage() {
         final String expectedText = "underlined test message";
         final String expectedAlertText =
                 "Error: Please enter at least a message, your email address and the security code.";
