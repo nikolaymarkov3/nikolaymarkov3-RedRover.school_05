@@ -9,7 +9,6 @@ public class SignV2Test extends BaseTest {
 
     @Test
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert() {
-
         final String expectedURLMessage = "Enter the URL for the link you want to add.";
 
         openBaseURL()
@@ -72,7 +71,6 @@ public class SignV2Test extends BaseTest {
 
     @Test
     public void testMessageAlertText_WhenItalicButtonClicked() {
-
         final String expectedAlertItalicMessage =
                 "Enter the text that you want to make italic.";
 
