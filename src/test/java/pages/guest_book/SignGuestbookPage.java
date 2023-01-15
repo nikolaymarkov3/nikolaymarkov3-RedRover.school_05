@@ -15,6 +15,9 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
     @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     private WebElement urlIcon;
 
+    @FindBy(xpath = "//a/img[@src='/images/bb/bbunderline.gif']")
+    private WebElement underlineIcon;
+
     @FindBy(name = "submit")
     private WebElement submitButton;
 
@@ -35,5 +38,9 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
     public String getMessageText() {
 
         return getText(message);
+    }
+
+    public void clickUnderlineIcon() {
+        click(underlineIcon);
     }
 }

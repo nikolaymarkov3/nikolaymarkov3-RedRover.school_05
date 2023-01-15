@@ -189,7 +189,6 @@ public class SignGuestbookTest extends BaseTest {
 
     @Test
     public void testAlertTextWhenClickBoldIcon() {
-
         final String expectedAlertText = "Enter the text that you want to make bold.";
 
         openBaseURL()
@@ -223,5 +222,24 @@ public class SignGuestbookTest extends BaseTest {
                 .getMessageText();
 
         Assert.assertEquals(actualBoldMessage, expectedBoldMessage);
+    }
+
+    @Test
+    public void testUnderlineTextMessage() {
+        final String expectedText = "underlined test message";
+        final String expectedAlertText =
+                "Error: Please enter at least a message, your email address and the security code.";
+
+        SignGuestbookPage signGuestbookPage =
+                openBaseURL()
+                        .clickGuestbookMenu()
+                        .clickSignGuestbookSubmenu();
+
+        signGuestbookPage.clickUnderlineIcon();
+        signGuestbookPage.acceptAlert(expectedText);
+        signGuestbookPage.clickSubmitButton();
+
+        Assert.assertTrue(signGuestbookPage.getMessageText().contentEquals("[u]" + expectedText + "[/u]"));
+        Assert.assertTrue(signGuestbookPage.getErrorMessageText().contentEquals(expectedAlertText));
     }
 }
