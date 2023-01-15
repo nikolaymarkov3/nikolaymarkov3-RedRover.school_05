@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class API_KotlinLanguageTest extends BaseTest {
@@ -28,7 +29,7 @@ public class API_KotlinLanguageTest extends BaseTest {
     final static String VALUE_INPUT4 = "Vote";
 
     final static String PAYLOAD = NAME_INPUT_1 + "=" + VALUE_INPUT1 + "&" + NAME_INPUT_2 + "="
-            + URLEncoder.encode(VALUE_INPUT2) + "&" + NAME_SELECT + "=" + VALUE_SELECT + "&" + NAME_INPUT_4
+            + URLEncoder.encode(VALUE_INPUT2, StandardCharsets.UTF_8) + "&" + NAME_SELECT + "=" + VALUE_SELECT + "&" + NAME_INPUT_4
             + "=" + VALUE_INPUT4;
     final static String PAGE_CONTEXT_BEFORE_REQUEST = "Voting\n" + "Error: Please select something.\n" + "Back";
 
