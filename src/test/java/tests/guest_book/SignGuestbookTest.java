@@ -225,6 +225,27 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
+    public void testBoldIconAlertWhenClickCancel() {
+        final String expectedMessage = "[b]null[/b]";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickBoldIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.dismissAlert();
+
+        String actualMessage = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertFalse(signGuestbookPage.isAlertPresent());
+        Assert.assertEquals(actualMessage, expectedMessage);    
+    }
+
+    @Test
     public void testUnderlineTextMessage() {
         final String expectedText = "underlined test message";
         final String expectedAlertText =

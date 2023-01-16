@@ -1,6 +1,7 @@
 package pages.base_abstract;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -173,5 +174,14 @@ public abstract class BasePage {
     public String getTitle() {
 
         return getDriver().getTitle();
+    }
+
+    public boolean isAlertPresent() {
+        try{
+            getDriver().switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e){
+            return false;
+        }
     }
 }

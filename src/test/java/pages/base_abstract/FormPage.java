@@ -98,4 +98,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     public void clickBoldIcon() {
         click(boldIcon);
     }
+
+    public void dismissAlert() {
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.dismiss();
+    }
 }
