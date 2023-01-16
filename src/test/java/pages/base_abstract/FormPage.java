@@ -104,6 +104,11 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         alert.dismiss();
     }
 
+    public String getBoldIcon() {
+
+        return boldIcon.getAttribute("src");
+    }
+    
     public String getEmailIcon() {
 
         return emailIcon.getAttribute("src");

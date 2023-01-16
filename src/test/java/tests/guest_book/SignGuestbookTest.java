@@ -310,6 +310,19 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
+    public void testBoldTextIcon() {
+        final String expectedBoldTextIcon = "https://www.99-bottles-of-beer.net/images/bb/bbbold.gif";
+
+        String actualBoldtextIcon =
+                openBaseURL()
+                        .clickGuestbookMenu()
+                        .clickSignGuestbookSubmenu()
+                        .getBoldIcon();
+
+        Assert.assertEquals(actualBoldtextIcon, expectedBoldTextIcon);
+    }
+    
+    @Test
     public void testEmailAlertPresenceAndTextInTextAreaAfterClickCancel() {
         final String expectedMessageInTextArea = "[email]null[/email]";
 
