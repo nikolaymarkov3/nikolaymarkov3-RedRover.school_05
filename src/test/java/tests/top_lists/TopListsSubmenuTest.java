@@ -79,4 +79,33 @@ public class TopListsSubmenuTest extends BaseTest {
         Assert.assertEquals(actualUrl, url );
         Assert.assertEquals(actualTitle, title);
     }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "TopListSubmenu")
+    public void testTopListsFooterSubmenusNavigateToCorrespondingPages(
+            int index, String title, String url) {
+
+        TopListsSubmenuPage topListsSubmenuPage =  openBaseURL()
+                .clickTopListFooterMenu();
+
+        List<WebElement> footerMenus = topListsSubmenuPage.getSubmenus();
+
+        String oldURL = topListsSubmenuPage.getURL();
+        String oldTitle = topListsSubmenuPage.getTitle();
+
+        String actualURL = topListsSubmenuPage
+                .clickMenu(index, footerMenus)
+                .getURL();
+
+        String actualTitle = topListsSubmenuPage
+                .clickMenu(index, footerMenus)
+                .getTitle();
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+
+        Assert.assertEquals(actualURL, url);
+        Assert.assertEquals(actualTitle, title);
+    }
 }
