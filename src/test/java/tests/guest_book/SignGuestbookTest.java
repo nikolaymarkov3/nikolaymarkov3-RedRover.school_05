@@ -159,11 +159,9 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
-    public void testEmailTextInTextAreaAfterClickSubmitButton()  {
-        final String testEmail = "test@test.test";
+    public void testMessageAlertText_WhenEmailButtonClicked() {
         final String expectedAlertEmailMessage =
                 "Enter the email address you want to add.";
-        final String expectedMessageInTextArea = "[email]test@test.test[/email]";
 
         openBaseURL()
                 .clickGuestBookFooterMenu()
@@ -176,6 +174,21 @@ public class SignGuestbookTest extends BaseTest {
                 signGuestbookPage
                         .getAlertText();
 
+        Assert.assertEquals(actualAlertEmailMessage, expectedAlertEmailMessage);
+    }
+
+    @Test(dependsOnMethods = "testMessageAlertText_WhenEmailButtonClicked")
+    public void testEmailTextInTextAreaAfterClickSubmitButton()  {
+        final String testEmail = "test@test.test";
+        final String expectedMessageInTextArea = "[email]test@test.test[/email]";
+
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
         signGuestbookPage.acceptAlert(testEmail);
 
         String actualMessageInTextArea =
@@ -183,8 +196,40 @@ public class SignGuestbookTest extends BaseTest {
                         .clickSubmitButton()
                         .getMessageText();
 
-        Assert.assertEquals(actualAlertEmailMessage, expectedAlertEmailMessage);
         Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
+    }
+
+    @Test
+    public void testEmailTextIcon() {
+        final String expectedIcon = "https://www.99-bottles-of-beer.net/images/bb/bbemail.gif";
+
+        String actualIcon = openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .getEmailIcon();
+
+        Assert.assertEquals(actualIcon, expectedIcon);
+    }
+
+    @Test
+    public void testEmailIconAlertWhenClickCancel() {
+        final String expectedMessage = "[email]null[/email]";
+
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.dismissAlert();
+
+        String actualMessage = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertFalse(signGuestbookPage.isAlertPresent(), "alert is present");
+        Assert.assertEquals(actualMessage, expectedMessage);
     }
 
     @Test
@@ -242,7 +287,7 @@ public class SignGuestbookTest extends BaseTest {
                 .getMessageText();
 
         Assert.assertFalse(signGuestbookPage.isAlertPresent());
-        Assert.assertEquals(actualMessage, expectedMessage);    
+        Assert.assertEquals(actualMessage, expectedMessage);
     }
 
     @Test

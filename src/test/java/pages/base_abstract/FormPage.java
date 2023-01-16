@@ -103,4 +103,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
     }
+
+    public String getEmailIcon() {
+
+        return emailIcon.getAttribute("src");
+    }
 }
