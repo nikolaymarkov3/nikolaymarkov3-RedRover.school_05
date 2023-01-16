@@ -309,7 +309,7 @@ public class SignGuestbookTest extends BaseTest {
         Assert.assertTrue(signGuestbookPage.getErrorMessageText().contentEquals(expectedAlertText));
     }
 
-    @Test
+    @Test   
     public void testBoldTextIcon() {
         final String expectedBoldTextIcon = "https://www.99-bottles-of-beer.net/images/bb/bbbold.gif";
 
@@ -323,7 +323,7 @@ public class SignGuestbookTest extends BaseTest {
     }
     
     @Test
-    public void testEmailAlertPresenceAndTextInTextAreaAfterClickCancel() {
+     public void testEmailAlertDisappearsAndTextInTextAreaWhenCancelIsClicked() {
         final String expectedMessageInTextArea = "[email]null[/email]";
 
         openBaseURL()
