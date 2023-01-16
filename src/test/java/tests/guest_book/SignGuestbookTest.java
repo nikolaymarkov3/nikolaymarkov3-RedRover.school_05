@@ -308,4 +308,25 @@ public class SignGuestbookTest extends BaseTest {
         Assert.assertTrue(signGuestbookPage.getMessageText().contentEquals("[u]" + expectedText + "[/u]"));
         Assert.assertTrue(signGuestbookPage.getErrorMessageText().contentEquals(expectedAlertText));
     }
+
+    @Test
+    public void testEmailAlertPresenceAndTextInTextAreaAfterClickCancel() {
+        final String expectedMessageInTextArea = "[email]null[/email]";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickEmailIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.dismissAlert();
+
+        String actualMessageInTextArea = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertFalse(signGuestbookPage.isAlertPresent());
+        Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
+    }
 }
