@@ -342,4 +342,20 @@ public class SignGuestbookTest extends BaseTest {
         Assert.assertFalse(signGuestbookPage.isAlertPresent());
         Assert.assertEquals(actualMessageInTextArea, expectedMessageInTextArea);
     }
+
+    @Test
+    public void testAlertText_WhenClickItalicIcon_FromFooterMenu() {
+        final String expectedAlertText = "Enter the text that you want to make italic.";
+
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickItalicIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        String actualAlertText = signGuestbookPage.getAlertText();
+
+        Assert.assertEquals(actualAlertText, expectedAlertText);
+    }
 }
