@@ -23,3 +23,8 @@
 <p>3. Clone a repository from the main menu:&nbsp;<br /><a title="https://www.jetbrains.com/help/idea/cloning-repository.html#clone_project_from_main_screen" href="https://www.jetbrains.com/help/idea/cloning-repository.html#clone_project_from_main_screen">https://www.jetbrains.com/help/idea/cloning-repository.html#clone_project_from_main_screen</a></p>
 <p>4. Go to the resources package, and copy local.properties.TEMPLATE file. Paste it to the resources package, and re-name the new file as&nbsp;local.properties</p>
 <p>5. Execute test class or single test by opening the Test class, right-clicking on the green triangle, and choosing Run</p>
+<h1>POM scheme</h1>
+<img src="src/images/scheme-0.png">
+<img src="src/images/scheme-1.png">
+<img src="src/images/scheme-2.png">
+<img src="src/images/scheme-3.png">

@@ -1,0 +1,320 @@
+@startuml
+
+together {
+    abstract class pages.base_abstract.BasePage {
+    }
+    abstract class pages.base_abstract.MainPage {
+    }
+    abstract class pages.base_abstract.FormPage {
+    }
+    abstract class pages.base_abstract.TablePage {
+    }
+}
+
+together {
+    abstract class pages.start.StartSubmenuPage {
+    }
+    abstract class pages.browse_languages.BrowseLanguagesSubmenuPage {
+    }
+    abstract class pages.search_languages.SearchLanguagesSubmenuPage {
+    }
+    abstract class pages.top_lists.TopListsSubmenuPage {
+    }
+    abstract class pages.guest_book.GuestbookSubmenuPage {
+    }
+    abstract class pages.submit_new_language.SubmitNewLanguageSubmenuPage {
+    }
+}
+
+pages.base_abstract.MainPage <|-- pages.base_abstract.FormPage
+pages.base_abstract.BasePage <|-- pages.base_abstract.MainPage
+pages.base_abstract.MainPage <|-- pages.base_abstract.TablePage
+
+pages.base_abstract.MainPage <|-- pages.start.StartSubmenuPage
+pages.base_abstract.FormPage <|-- pages.submit_new_language.SubmitNewLanguageSubmenuPage
+pages.base_abstract.TablePage <|-- pages.top_lists.TopListsSubmenuPage
+pages.base_abstract.FormPage <|-- pages.guest_book.GuestbookSubmenuPage
+pages.base_abstract.TablePage <|-- pages.search_languages.SearchLanguagesSubmenuPage
+pages.base_abstract.TablePage <|-- pages.browse_languages.BrowseLanguagesSubmenuPage
+
+newpage
+
+together {
+    abstract class pages.start.StartSubmenuPage {
+    }
+    abstract class pages.browse_languages.BrowseLanguagesSubmenuPage {
+    }
+    abstract class pages.search_languages.SearchLanguagesSubmenuPage {
+    }
+    abstract class pages.top_lists.TopListsSubmenuPage {
+    }
+    abstract class pages.guest_book.GuestbookSubmenuPage {
+    }
+    abstract class pages.submit_new_language.SubmitNewLanguageSubmenuPage {
+    }
+}
+
+together {
+    class pages.start.StartPage {
+    }
+    class pages.start.TeamPage {
+    }
+    class pages.start.LyricsPage {
+    }
+    class pages.start.HistoryPage {
+    }
+    class pages.start.PrivacyPage {
+    }
+}
+
+
+together {
+    abstract class pages.browse_languages.BrowseLanguagesSubmenuPage {
+    }
+    abstract class pages.browse_languages.letters.LetterPage {
+    }
+    abstract class pages.browse_languages.languages.LanguagePage {
+    }
+}
+
+together {
+    class pages.search_languages.SearchLanguagesPage {
+    }
+}
+
+together {
+    class pages.top_lists.TopHitsPage {
+    }
+    class pages.top_lists.NewCommentsPage {
+    }
+    class pages.top_lists.TopRatedAssemblyPage {
+    }
+    class pages.top_lists.TopRatedPage {
+    }
+    class pages.top_lists.TopRatedRealPage {
+    }
+    class pages.top_lists.TopRatedEsotericPage {
+    }
+    class pages.top_lists.NewLanguagesThisMonthPage {
+    }
+}
+
+together {
+    class pages.guest_book.SignGuestbookPage {
+    }
+    class pages.guest_book.ReadGuestbookPage {
+    }
+}
+
+together {
+    class pages.submit_new_language.SubmitNewLanguagePage {
+    }
+}
+
+pages.browse_languages.BrowseLanguagesSubmenuPage <|-- pages.browse_languages.languages.LanguagePage
+
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.TopHitsPage
+
+pages.submit_new_language.SubmitNewLanguageSubmenuPage <|-- pages.submit_new_language.SubmitNewLanguagePage
+
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.TopRatedRealPage
+
+pages.guest_book.GuestbookSubmenuPage <|-- pages.guest_book.SignGuestbookPage
+
+pages.start.StartSubmenuPage <|-- pages.start.TeamPage
+
+pages.start.StartSubmenuPage <|-- pages.start.LyricsPage
+
+pages.guest_book.GuestbookSubmenuPage <|-- pages.guest_book.ReadGuestbookPage
+
+pages.start.StartSubmenuPage <|-- pages.start.PrivacyPage
+
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.NewCommentsPage
+
+pages.browse_languages.BrowseLanguagesSubmenuPage <|-- pages.browse_languages.letters.LetterPage
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.TopRatedAssemblyPage
+
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.TopRatedPage
+pages.search_languages.SearchLanguagesSubmenuPage <|-- pages.search_languages.SearchLanguagesPage
+
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.TopRatedEsotericPage
+pages.start.StartSubmenuPage <|-- pages.start.HistoryPage
+pages.top_lists.TopListsSubmenuPage <|-- pages.top_lists.NewLanguagesThisMonthPage
+
+pages.start.StartSubmenuPage <|-- pages.start.StartPage
+
+newpage
+
+together {
+    abstract class pages.browse_languages.letters.LetterPage {
+    }
+    class pages.browse_languages.letters.ABCPage {
+    }
+    class pages.browse_languages.letters.ZeroPage {
+    }
+    class pages.browse_languages.letters.APage {
+    }
+    class pages.browse_languages.letters.BPage {
+    }
+    class pages.browse_languages.letters.CPage {
+    }
+    class pages.browse_languages.letters.YPage {
+    }
+    class pages.browse_languages.letters.SPage {
+    }
+    class pages.browse_languages.letters.FPage {
+    }
+    class pages.browse_languages.letters.VPage {
+    }
+    class pages.browse_languages.letters.LPage {
+    }
+    class pages.browse_languages.letters.XPage {
+    }
+    class pages.browse_languages.letters.GPage {
+    }
+    class pages.browse_languages.letters.MPage {
+    }
+    class pages.browse_languages.letters.RPage {
+    }
+    class pages.browse_languages.letters.NPage {
+    }
+    class pages.browse_languages.letters.EPage {
+    }
+    class pages.browse_languages.letters.QPage {
+    }
+    class pages.browse_languages.letters.KPage {
+    }
+    class pages.browse_languages.letters.TPage {
+    }
+    class pages.browse_languages.letters.UPage {
+    }
+    class pages.browse_languages.letters.WPage {
+    }
+    class pages.browse_languages.letters.DPage {
+    }
+    class pages.browse_languages.letters.JPage {
+    }
+    class pages.browse_languages.letters.OPage {
+    }
+    class pages.browse_languages.letters.ZPage {
+    }
+    class pages.browse_languages.letters.PPage {
+    }
+    class pages.browse_languages.letters.IPage {
+    }
+}
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.YPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.SPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.FPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.CPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.VPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.ZeroPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.LPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.XPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.APage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.MPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.RPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.GPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.KPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.NPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.EPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.ABCPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.BPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.QPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.WPage
+
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.TPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.UPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.IPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.PPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.DPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.JPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.OPage
+pages.browse_languages.letters.LetterPage <|-- pages.browse_languages.letters.ZPage
+
+newpage
+
+together {
+    abstract class pages.browse_languages.languages.LanguagePage {
+    }
+    class pages.browse_languages.languages.AdaLanguagePage {
+    }
+    class pages.browse_languages.languages.ScalaLanguagePage {
+    }
+    class pages.browse_languages.languages.ZimLanguagePage {
+    }
+    class pages.browse_languages.languages.CheetahLanguagePage {
+    }
+    class pages.browse_languages.languages.GapLanguagePage {
+    }
+    class pages.browse_languages.languages.JQueryLanguagePage {
+    }
+    class pages.browse_languages.languages.YabasicLanguagePage {
+    }
+    class pages.browse_languages.languages.LiLiLanguagePage {
+    }
+    class pages.browse_languages.languages.JavaScriptLanguagePage {
+    }
+    class pages.browse_languages.languages.PythonLanguagePage {
+    }
+    class pages.browse_languages.languages.KalkulonLanguagePage {
+    }
+    class pages.browse_languages.languages.BashLanguagePage {
+    }
+    class pages.browse_languages.languages.KotlinLanguagePage {
+    }
+    class pages.browse_languages.languages.ShakespeareLanguagePage {
+    }
+    class pages.browse_languages.languages.DelphiLanguagePage {
+    }
+    class pages.browse_languages.languages.YacasLanguagePage {
+    }
+    class pages.browse_languages.languages.JavaLanguagePage {
+    }
+    class pages.browse_languages.languages.JRLanguagePage {
+    }
+    class pages.browse_languages.languages.MagnumLanguagePage {
+    }
+    class pages.browse_languages.languages.EnglishLanguagePage {
+    }
+}
+
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.AdaLanguagePage
+
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.ScalaLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.ZimLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.CheetahLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.GapLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.JQueryLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.YabasicLanguagePage
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.LiLiLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.JavaScriptLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.PythonLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.KalkulonLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.JavaLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.DelphiLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.YacasLanguagePage
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.BashLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.KotlinLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.ShakespeareLanguagePage
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.JRLanguagePage
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.MagnumLanguagePage
+
+pages.browse_languages.languages.LanguagePage <|-- pages.browse_languages.languages.EnglishLanguagePage
+
+@enduml
