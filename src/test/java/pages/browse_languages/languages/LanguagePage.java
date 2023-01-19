@@ -9,8 +9,44 @@ import java.util.List;
 
 public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
-    @FindBy(xpath = "//div[@id='voting']/p[2]/a")
+    final static String VOTING_PATH = "//div[@id='voting']";
+    final static String ADD_COMMENTS_PATH = "//div[@id='addcomments']";
+
+    @FindBy(xpath = VOTING_PATH + "/p[2]/a")
     private List<WebElement> externalLinks;
+
+    @FindBy(xpath = VOTING_PATH + "/h2")
+    private List<WebElement> votingHeader;
+
+    @FindBy(xpath = VOTING_PATH + "//a[@title='reddit' and @href]")
+    private WebElement redditLink;
+
+    @FindBy(xpath = VOTING_PATH + "//input[@name = 'submitcomment']")
+    private WebElement voteButton;
+
+    @FindBy(xpath = VOTING_PATH + "//form")
+    private WebElement votingForm;
+
+    @FindBy(xpath = VOTING_PATH + "//form//input[1]")
+    private WebElement input1Voting;
+
+    @FindBy(xpath = VOTING_PATH + "//form//input[2]")
+    private WebElement input2Voting;
+
+    @FindBy(xpath = VOTING_PATH + "//form//select")
+    private WebElement select3Voting;
+
+    @FindBy(xpath = VOTING_PATH + "//form//input[3]")
+    private WebElement input4Voting;
+
+    @FindBy(xpath = VOTING_PATH + "//option[5]")
+    private WebElement niceCodingRate;
+
+    @FindBy(xpath = "//a[contains(@href,'/download/')]")
+    private List<WebElement> downloadSourceLinks;
+
+    @FindBy(xpath = "//a[@href='#addcomment']")
+    private List<WebElement> writeCommentLinks;
 
     @FindBy(xpath = "//div[@id='alternatives']/h2")
     private WebElement alternativeVersionsHeader;
@@ -18,49 +54,16 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//div[@id='comments']/h2")
     private WebElement commentsHeader;
 
-    @FindBy(xpath = "//div[@id='voting']/h2")
-    private List<WebElement> votingHeader;
-
-    @FindBy(xpath = "//a[contains(@href,'/download/')]")
-    private List<WebElement> downloadSourceLinks;
-
-    @FindBy(xpath = "//a[@title='reddit' and @href]")
-    private WebElement redditLink;
-
-    @FindBy(xpath = "//div[@id = 'voting']//input[@name = 'submitcomment']")
-    private WebElement voteButton;
-
-    @FindBy(xpath = "//div[@id = 'voting']//form")
-    private WebElement votingForm;
-
-    @FindBy(xpath = "//div[@id = 'voting']//form//input[1]")
-    private WebElement input1Voting;
-
-    @FindBy(xpath = "//div[@id = 'voting']//form//input[2]")
-    private WebElement input2Voting;
-
-    @FindBy(xpath = "//div[@id = 'voting']//form//select")
-    private WebElement select3Voting;
-
-    @FindBy(xpath = "//div[@id = 'voting']//form//input[3]")
-    private WebElement input4Voting;
-
-    @FindBy(xpath = "//div[@id='voting']//option[5]")
-    private WebElement niceCodingRate;
-
-    @FindBy(xpath = "//a[@href='#addcomment']")
-    private List<WebElement> writeCommentLinks;
-
-    @FindBy(xpath = "//div[@id='addcomments']//a[@href='/submitnewlanguage.html']")
+    @FindBy(xpath = ADD_COMMENTS_PATH + "//a[@href='/submitnewlanguage.html']")
     private WebElement formLink;
 
-    @FindBy(xpath = "//div[@id='addcomments']/h2")
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/h2")
     private WebElement h2HeaderAddComment;
 
-    @FindBy(xpath = "//div[@id='addcomments']/p")
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/p")
     private WebElement infoTextAddComment;
 
-    @FindBy(xpath = "//div[@id='addcomments']/form/p/strong")
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/form/p/strong")
     private List<WebElement> fieldsToFillAddComment;
 
     public LanguagePage(WebDriver driver) {
