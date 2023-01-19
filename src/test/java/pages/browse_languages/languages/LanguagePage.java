@@ -54,6 +54,15 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//div[@id='addcomments']//a[@href='/submitnewlanguage.html']")
     private WebElement formLink;
 
+    @FindBy(xpath = "//div[@id='addcomments']/h2")
+    private WebElement h2HeaderAddComment;
+
+    @FindBy(xpath = "//div[@id='addcomments']/p")
+    private WebElement infoTextAddComment;
+
+    @FindBy(xpath = "//div[@id='addcomments']/form/p/strong")
+    private List<WebElement> fieldsToFillAddComment;
+
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -91,6 +100,21 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     public List<String> getWriteCommentLinksTexts() {
 
         return getListText(writeCommentLinks);
+    }
+
+    public String getH2HeaderAddCommentText() {
+
+        return getText(h2HeaderAddComment);
+    }
+
+    public String getInfoAddCommentText() {
+
+        return getText(infoTextAddComment);
+    }
+
+    public List<String> getFieldsToFillAddComment() {
+
+        return getListText(fieldsToFillAddComment);
     }
 
     public List<WebElement> getWriteCommentLinks() {

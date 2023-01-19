@@ -45,4 +45,37 @@ public class KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(actualH2HeaderComments, expectedH2HeaderComments);
         Assert.assertEquals(actualH2HeaderTextVoting, expectedH2HeaderTextVoting);
     }
+
+    @Test
+    public void testAddCommentInformationAfterClickingWriteCommentButton() {
+        final String expectedH2HeaderAddComment = "Add Comment";
+        final String expectedInfoTextAddComment = "Please provide a value for the fields Name, Comment and Security Code.\n" +
+                "This is a gravatar-friendly website.\n" +
+                "E-mail addresses will never be shown.\n" +
+                "Enter your e-mail address to use your gravatar.\n" +
+                "\n" +
+                "Please don't post large portions of code here! Use the form to submit new examples or updates instead!";
+        final List<String> expectedFieldsToFillAddComment = List.of("Name:", "eMail:", "URL:", "Security Code:", "Comment:");
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickKSubmenu()
+                .clickKotlinLanguage();
+
+        KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
+
+        String actualOldH2HeaderAddComment = kotlinLanguagePage.getH2HeaderAddCommentText();
+
+        Assert.assertTrue(actualOldH2HeaderAddComment.isEmpty(), "Add comment is not visible");
+
+        kotlinLanguagePage.clickWriteComment();
+
+        String actualH2HeaderAddComment = kotlinLanguagePage.getH2HeaderAddCommentText();
+        String actualInfoTextAddComment = kotlinLanguagePage.getInfoAddCommentText();
+        List<String> actualFieldsToFillAddComment = kotlinLanguagePage.getFieldsToFillAddComment();
+
+        Assert.assertEquals(actualH2HeaderAddComment, expectedH2HeaderAddComment);
+        Assert.assertEquals(actualInfoTextAddComment, expectedInfoTextAddComment);
+        Assert.assertEquals(actualFieldsToFillAddComment, expectedFieldsToFillAddComment);
+    }
 }

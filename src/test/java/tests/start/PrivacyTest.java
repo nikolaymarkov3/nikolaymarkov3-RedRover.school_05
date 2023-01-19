@@ -30,6 +30,7 @@ public class PrivacyTest extends BaseTest {
         Assert.assertEquals(actualEmail, expectedEmail);
     }
 
+    @Test
     public void testTextInHeaderH3() {
         final String expectedTextInHeaderH3 = "Oliver Schade";
 
