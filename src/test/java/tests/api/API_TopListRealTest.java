@@ -20,8 +20,7 @@ public class API_TopListRealTest extends BaseTest {
     final static String HEADER = "Top Rated Real Languages";
 
     @Test
-    public void testAttributes_DefaultVAlues() {
-
+    public void testAttributes_DefaultValues() {
         TopRatedRealPage topListRealPage =
                 openBaseURL()
                         .clickTopListsMenu()

@@ -8,7 +8,7 @@ import pages.browse_languages.languages.LiLiLanguagePage;
 public class LiLiLanguageTest extends BaseTest {
 
     @Test
-    public void testLuaLanguagePageHeader() {
+    public void testLiliLanguagePageHeader() {
         final String expectedH2Header = "Language LiLi";
 
         String actualH2Header =
@@ -26,7 +26,7 @@ public class LiLiLanguageTest extends BaseTest {
         final String expectedExternalURL = "https://littlisp.sourceforge.net/";
         final String expectedExternalTitle = "The Lili Lisp Dialect Interpreter";
 
-        String oldLuaLanguagePageURL =
+        String oldLiliLanguagePageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickLSubmenu()
@@ -37,7 +37,7 @@ public class LiLiLanguageTest extends BaseTest {
 
         liLiLanguagePage.clickLiLiLanguageInfoLink();
 
-        Assert.assertNotEquals(oldLuaLanguagePageURL, getExternalPageURL());
+        Assert.assertNotEquals(oldLiliLanguagePageURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
         Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }

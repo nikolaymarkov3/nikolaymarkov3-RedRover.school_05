@@ -11,7 +11,6 @@ public class KotlinLanguageTest extends BaseTest {
 
     @Test
     public void testKotlinPageContent() {
-
         final String expectedH2HeaderLanguageKotlin = "Language Kotlin";
         final String expectedH2HeaderAlternativeVersions = "Alternative Versions";
         final String expectedH2HeaderComments = "Comments";

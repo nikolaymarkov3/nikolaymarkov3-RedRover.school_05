@@ -179,8 +179,10 @@ public abstract class BasePage {
     public boolean isAlertPresent() {
         try{
             getDriver().switchTo().alert();
+
             return true;
         } catch (NoAlertPresentException e){
+
             return false;
         }
     }
