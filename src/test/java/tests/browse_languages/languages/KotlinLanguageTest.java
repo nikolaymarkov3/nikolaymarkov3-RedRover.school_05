@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.KotlinLanguagePage;
+import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
 
@@ -76,5 +77,33 @@ public class KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(actualH2HeaderAddComment, expectedH2HeaderAddComment);
         Assert.assertEquals(actualInfoTextAddComment, expectedInfoTextAddComment);
         Assert.assertEquals(actualFieldsToFillAddComment, expectedFieldsToFillAddComment);
+    }
+
+    @Test
+    public void testFormLink_NavigatesTo_SubmitNewLanguagePage() {
+        final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+        final String expectedTitle = "99 Bottles of Beer | Submit new Language";
+
+        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickKSubmenu()
+                .clickKotlinLanguage()
+                .clickWriteComment();
+
+        KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
+
+        String oldURL = kotlinLanguagePage.getURL();
+
+        kotlinLanguagePage.clickFormLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = submitNewLanguagePage.getURL();
+        String actualTitle = submitNewLanguagePage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
