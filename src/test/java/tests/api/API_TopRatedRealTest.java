@@ -19,7 +19,10 @@ public class API_TopRatedRealTest extends BaseTest {
 
     @Test
     public void testAttributes_DefaultValues() {
-        TopRatedRealPage topRatedRealPage = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu();
+        TopRatedRealPage topRatedRealPage =
+                openBaseURL()
+                        .clickTopListsMenu()
+                        .clickTopRatedRealSubmenu();
 
         Assert.assertEquals(topRatedRealPage.getHref(), getBaseUrl() + ACTION);
         Assert.assertNotNull(topRatedRealPage.getPageContext());

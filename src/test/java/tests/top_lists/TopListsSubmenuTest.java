@@ -76,7 +76,7 @@ public class TopListsSubmenuTest extends BaseTest {
                 .clickMenu(index, submenus)
                 .getTitle();
 
-        Assert.assertEquals(actualUrl, url );
+        Assert.assertEquals(actualUrl, url);
         Assert.assertEquals(actualTitle, title);
     }
 

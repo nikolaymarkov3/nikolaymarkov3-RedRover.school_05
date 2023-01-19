@@ -21,10 +21,10 @@ public class ReadGuestbookTest extends BaseTest {
     public void testMainFooterGuestBookv2NavigatesToGuestbookPage() {
         final String urlKeyValue = "guest";
 
-        String guestBoopPageURL = openBaseURL()
+        String guestBookPageURL = openBaseURL()
                 .clickGuestBookFooterMenu()
                 .getURL();
 
-        Assert.assertTrue(guestBoopPageURL.contains(urlKeyValue));
+        Assert.assertTrue(guestBookPageURL.contains(urlKeyValue));
     }
 }

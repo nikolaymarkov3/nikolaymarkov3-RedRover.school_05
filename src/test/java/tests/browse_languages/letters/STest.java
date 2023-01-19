@@ -9,7 +9,6 @@ import pages.browse_languages.letters.SPage;
 public class STest extends BaseTest {
     @Test
     public void testScalaLink_NavigatesTo_ScalaLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-scala-2179.html";
         final String expectedTitle = "99 Bottles of Beer | Language Scala";
 

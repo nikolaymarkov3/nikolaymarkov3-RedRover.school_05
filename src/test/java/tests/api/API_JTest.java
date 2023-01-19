@@ -20,7 +20,6 @@ public class API_JTest extends BaseTest {
 
     @Test
     public void testAttributes_DefaultValues() {
-
         JPage jPage = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu();

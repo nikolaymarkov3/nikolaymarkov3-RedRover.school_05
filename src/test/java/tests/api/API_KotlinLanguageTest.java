@@ -34,8 +34,7 @@ public class API_KotlinLanguageTest extends BaseTest {
     final static String PAGE_CONTEXT_BEFORE_REQUEST = "Voting\n" + "Error: Please select something.\n" + "Back";
 
     @Test
-    public void testAttributes_DefaultVAlues() {
-
+    public void testAttributes_DefaultValues() {
         KotlinLanguagePage kotlinLanguagePage =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()

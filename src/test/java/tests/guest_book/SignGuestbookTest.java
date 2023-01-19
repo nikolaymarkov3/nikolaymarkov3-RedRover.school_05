@@ -8,7 +8,7 @@ import pages.guest_book.SignGuestbookPage;
 public class SignGuestbookTest extends BaseTest {
 
     @Test
-    public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert() {
+    public void testSignGuestBookVerifyTextInAlertUrlAndAcceptAlert() {
         final String expectedURLMessage = "Enter the URL for the link you want to add.";
 
         openBaseURL()
