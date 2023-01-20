@@ -358,4 +358,25 @@ public class SignGuestbookTest extends BaseTest {
 
         Assert.assertEquals(actualAlertText, expectedAlertText);
     }
+
+    @Test
+    public void testItalicTextInMessage_FromFooterMenu() {
+        final String text = "Italic text";
+        final String expectedItalicMessage = "[i]Italic text[/i]";
+
+        openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .clickItalicIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.acceptAlert(text);
+
+        String actualItalicMessage = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
+    }
 }
