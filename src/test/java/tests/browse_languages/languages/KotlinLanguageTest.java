@@ -102,4 +102,25 @@ public class KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
+    @Test
+    public void testGravatarFriendlyLink_NavigatesTo_ExternalPage() {
+        final String expectedExternalUrl = "https://en.gravatar.com/";
+        final String expectedExternalTitle = "Gravatar - Globally Recognized Avatars";
+
+        KotlinLanguagePage kotlinLanguagePage =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickKSubmenu()
+                        .clickKotlinLanguage();
+
+        kotlinLanguagePage.clickWriteComment();
+        kotlinLanguagePage.clickGravatarFriendlyLink();
+
+        String actualExternalUrl = getExternalPageURL();
+        String actualExternalTitle = getExternalPageTitle();
+
+        Assert.assertEquals(actualExternalUrl, expectedExternalUrl);
+        Assert.assertEquals(actualExternalTitle, expectedExternalTitle);
+    }
 }

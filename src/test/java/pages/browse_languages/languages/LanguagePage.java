@@ -57,6 +57,9 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = ADD_COMMENTS_PATH + "//a[@href='/submitnewlanguage.html']")
     private WebElement formLink;
 
+    @FindBy(xpath = ADD_COMMENTS_PATH + "//a[@href='http://www.gravatar.com']")
+    private WebElement gravatarFriendlyLink;
+
     @FindBy(xpath = ADD_COMMENTS_PATH + "/h2")
     private WebElement h2HeaderAddComment;
 
@@ -193,5 +196,9 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     public void clickFormLink() {
         click(formLink);
+    }
+
+    public void clickGravatarFriendlyLink() {
+        click(gravatarFriendlyLink);
     }
 }
