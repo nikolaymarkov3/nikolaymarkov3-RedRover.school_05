@@ -406,7 +406,7 @@ public class SignGuestbookTest extends BaseTest {
                 .clickUrlIcon();
 
         SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
-
+        
         String actualFirstPromptAlert = signGuestbookPage.getAlertText();
 
         signGuestbookPage.acceptAlert(text);
@@ -418,14 +418,30 @@ public class SignGuestbookTest extends BaseTest {
     }
 
     @Test
-    public void testUrlPromptAlertsDisappear_WhenClickCancelButton() {
-        final String expectedPageUrl = "https://www.99-bottles-of-beer.net/signv2.html";
+    public void testTextInMessageField_WhenClickSubmitButton() {
+        final String urlLink = "URL link";
+        final String webSiteTitle = "Web site title";
+        final String expectedMessageText = "[url=URL link]Web site title[/url]";
 
         openBaseURL()
                 .clickGuestbookMenu()
                 .clickSignGuestbookSubmenu()
                 .clickUrlIcon();
 
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.acceptTwoAlerts(urlLink, webSiteTitle);
+
+        String actualMessageText = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertEquals(actualMessageText, expectedMessageText);
+    }
+
+    @Test
+    public void testUrlPromptAlertsDisappear_WhenClickCancelButton() {
+        final String expectedPageUrl = "https://www.99-bottles-of-beer.net/signv2.html";
         SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
         signGuestbookPage.dismissTwoAlerts();
