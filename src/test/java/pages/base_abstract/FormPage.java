@@ -109,6 +109,12 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         alert.dismiss();
     }
 
+    public void dismissTwoAlerts() {
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.dismiss();
+        alert.dismiss();
+    }
+
     public String getBoldIcon() {
 
         return boldIcon.getAttribute("src");
