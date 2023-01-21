@@ -379,4 +379,26 @@ public class SignGuestbookTest extends BaseTest {
 
         Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
     }
+
+    @Test
+    public void testTextInMessageField_WhenClickSubmitButton() {
+        final String urlLink = "URL link";
+        final String webSiteTitle = "Web site title";
+        final String expectedMessageText = "[url=URL link]Web site title[/url]";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickUrlIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        signGuestbookPage.acceptTwoAlerts(urlLink, webSiteTitle);
+
+        String actualMessageText = signGuestbookPage
+                .clickSubmitButton()
+                .getMessageText();
+
+        Assert.assertEquals(actualMessageText, expectedMessageText);
+    }
 }
