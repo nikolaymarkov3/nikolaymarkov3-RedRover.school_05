@@ -379,4 +379,16 @@ public class SignGuestbookTest extends BaseTest {
 
         Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
     }
+
+    @Test
+    public void testUrlIcon() {
+        final String expectedUrlIcon = "https://www.99-bottles-of-beer.net/images/bb/bburl.gif";
+
+        String actualUrlIcon = openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .getUrlIcon();
+
+        Assert.assertEquals(actualUrlIcon, expectedUrlIcon);
+    }
 }

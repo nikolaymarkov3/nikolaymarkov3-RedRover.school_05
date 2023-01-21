@@ -62,6 +62,11 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         click(urlIcon);
     }
 
+    public String getUrlIcon() {
+
+        return urlIcon.getAttribute("src");
+    }
+
     public String getAlertText() {
         Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
 
