@@ -69,6 +69,15 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = ADD_COMMENTS_PATH + "/form/p/strong")
     private List<WebElement> fieldsToFillAddComment;
 
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/form/p/input[@type='submit']")
+    private WebElement submitCommentButton;
+
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/form/p/textarea[@name='comment']")
+    private WebElement textarea;
+
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/p[@style]")
+    private WebElement errorMessage;
+
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -121,6 +130,11 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     public List<String> getFieldsToFillAddComment() {
 
         return getListText(fieldsToFillAddComment);
+    }
+
+    public String getErrorMessageText() {
+
+        return getText(errorMessage);
     }
 
     public List<WebElement> getWriteCommentLinks() {
@@ -178,6 +192,11 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
         return getAttribute(input4Voting, "name");
     }
 
+    public String getCommentBorder() {
+
+        return getBorder(textarea);
+    }
+
     public void clickRedditLink() {
         click(redditLink);
     }
@@ -200,5 +219,9 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     public void clickGravatarFriendlyLink() {
         click(gravatarFriendlyLink);
+    }
+
+    public void clickSubmitCommentButton() {
+        click(submitCommentButton);
     }
 }

@@ -123,4 +123,35 @@ public class KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(actualExternalUrl, expectedExternalUrl);
         Assert.assertEquals(actualExternalTitle, expectedExternalTitle);
     }
+
+    @Test
+    public void testRequiredCommentFieldCircledRedAndErrorTextAppearsWhenClickingButtonSubmitComment() {
+        final String expectedBorderOfRequiredFieldComment = "1px solid rgb(255, 0, 0)";
+        final String expectedErrorMessage = "Error: Error: A comment doesn't make sense without text.";
+        final String expectedOldBorder = "1px solid rgb(153, 153, 153)";
+
+        KotlinLanguagePage kotlinLanguagePage =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickKSubmenu()
+                        .clickKotlinLanguage();
+
+        kotlinLanguagePage.clickWriteComment();
+
+        String actualOldBorder = kotlinLanguagePage.getCommentBorder();
+        Assert.assertEquals(actualOldBorder, expectedOldBorder);
+
+        kotlinLanguagePage.clickSubmitCommentButton();
+
+        String errorMessage = kotlinLanguagePage.getErrorMessageText();
+        Assert.assertTrue(errorMessage.isEmpty(), "No error message");
+
+        kotlinLanguagePage.clickWriteComment();
+
+        String actualErrorMessage = kotlinLanguagePage.getErrorMessageText();
+        String actualBorderOfRequiredFieldComment = kotlinLanguagePage.getCommentBorder();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+        Assert.assertEquals(actualBorderOfRequiredFieldComment, expectedBorderOfRequiredFieldComment);
+    }
 }
