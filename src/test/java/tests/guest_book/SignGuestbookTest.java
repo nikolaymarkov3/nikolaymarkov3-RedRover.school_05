@@ -442,6 +442,12 @@ public class SignGuestbookTest extends BaseTest {
     @Test
     public void testUrlPromptAlertsDisappear_WhenClickCancelButton() {
         final String expectedPageUrl = "https://www.99-bottles-of-beer.net/signv2.html";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickUrlIcon();
+
         SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
 
         signGuestbookPage.dismissTwoAlerts();
