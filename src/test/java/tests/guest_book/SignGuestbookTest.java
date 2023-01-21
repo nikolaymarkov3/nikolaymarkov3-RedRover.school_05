@@ -380,11 +380,33 @@ public class SignGuestbookTest extends BaseTest {
         Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
     }
 
+
     @Test
     public void testTextInMessageField_WhenClickSubmitButton() {
         final String urlLink = "URL link";
         final String webSiteTitle = "Web site title";
         final String expectedMessageText = "[url=URL link]Web site title[/url]";
+
+    
+    @Test
+    public void testUrlIcon() {
+        final String expectedUrlIcon = "https://www.99-bottles-of-beer.net/images/bb/bburl.gif";
+
+        String actualUrlIcon = openBaseURL()
+                .clickGuestBookFooterMenu()
+                .clickSignGuestbookSubmenu()
+                .getUrlIcon();
+
+        Assert.assertEquals(actualUrlIcon, expectedUrlIcon);
+    }
+    
+    @Test
+    public void testPromptAlertsTexts_WhenClickUrlIcon () {
+        final String expectedFirstPromptAlert =
+                "Enter the URL for the link you want to add.";
+        final String expectedSecondPromptAlert =
+                "Enter the web site title";
+        final String text = "Text";
 
         openBaseURL()
                 .clickGuestbookMenu()
@@ -400,5 +422,14 @@ public class SignGuestbookTest extends BaseTest {
                 .getMessageText();
 
         Assert.assertEquals(actualMessageText, expectedMessageText);
+        
+        String actualFirstPromptAlert = signGuestbookPage.getAlertText();
+
+        signGuestbookPage.acceptAlert(text);
+
+        String actualSecondPromptAlert = signGuestbookPage.getAlertText();
+
+        Assert.assertEquals(actualFirstPromptAlert, expectedFirstPromptAlert);
+        Assert.assertEquals(actualSecondPromptAlert, expectedSecondPromptAlert);
     }
 }
