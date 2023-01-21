@@ -380,6 +380,7 @@ public class SignGuestbookTest extends BaseTest {
         Assert.assertEquals(actualItalicMessage, expectedItalicMessage);
     }
 
+    
     @Test
     public void testUrlIcon() {
         final String expectedUrlIcon = "https://www.99-bottles-of-beer.net/images/bb/bburl.gif";
@@ -390,5 +391,30 @@ public class SignGuestbookTest extends BaseTest {
                 .getUrlIcon();
 
         Assert.assertEquals(actualUrlIcon, expectedUrlIcon);
+    }
+    
+    @Test
+    public void testPromptAlertsTexts_WhenClickUrlIcon () {
+        final String expectedFirstPromptAlert =
+                "Enter the URL for the link you want to add.";
+        final String expectedSecondPromptAlert =
+                "Enter the web site title";
+        final String text = "Text";
+
+        openBaseURL()
+                .clickGuestbookMenu()
+                .clickSignGuestbookSubmenu()
+                .clickUrlIcon();
+
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        String actualFirstPromptAlert = signGuestbookPage.getAlertText();
+
+        signGuestbookPage.acceptAlert(text);
+
+        String actualSecondPromptAlert = signGuestbookPage.getAlertText();
+
+        Assert.assertEquals(actualFirstPromptAlert, expectedFirstPromptAlert);
+        Assert.assertEquals(actualSecondPromptAlert, expectedSecondPromptAlert);
     }
 }
