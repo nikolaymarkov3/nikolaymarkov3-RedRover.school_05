@@ -38,6 +38,11 @@ public abstract class BasePage {
         element.sendKeys(text);
     }
 
+    public void inputClear(String text, WebElement element) {
+        clear(element);
+        element.sendKeys(text);
+    }
+
     public String getText(WebElement element) {
 
         return element.getText();

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PythonLanguagePage extends LanguagePage {
+public class PythonLanguagePage extends LanguagePage<PythonLanguagePage> {
 
     @FindBy(xpath = "//a[@href='http://www.python.org/']")
     private WebElement PythonLanguageInfoLink;
@@ -15,5 +15,10 @@ public class PythonLanguagePage extends LanguagePage {
 
     public void clickPythonLanguageInfoLink() {
         click(PythonLanguageInfoLink);
+    }
+
+    protected PythonLanguagePage createLanguagePage() {
+
+        return new PythonLanguagePage(getDriver());
     }
 }

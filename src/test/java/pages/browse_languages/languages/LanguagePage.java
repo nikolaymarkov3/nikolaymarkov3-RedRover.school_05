@@ -7,7 +7,7 @@ import pages.browse_languages.BrowseLanguagesSubmenuPage;
 
 import java.util.List;
 
-public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
+public abstract class LanguagePage<LanguagePageType> extends BrowseLanguagesSubmenuPage {
 
     final static String VOTING_PATH = "//div[@id='voting']";
     final static String ADD_COMMENTS_PATH = "//div[@id='addcomments']";
@@ -78,9 +78,26 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = ADD_COMMENTS_PATH + "/p[@style]")
     private WebElement errorMessage;
 
+    @FindBy(name = "name")
+    private WebElement inputName;
+
+    @FindBy(name = "email")
+    private WebElement inputEmail;
+
+    @FindBy(name = "url")
+    private WebElement inputURL;
+
+    @FindBy(name = "captcha")
+    private WebElement inputCaptcha;
+
+    @FindBy(name = "submitcomment")
+    private WebElement inputComment;
+
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
+
+    protected abstract LanguagePageType createLanguagePage();
 
     public List<WebElement> getExternalLinks() {
 
@@ -209,8 +226,10 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
         click(niceCodingRate);
     }
 
-    public void clickWriteComment() {
+    public LanguagePageType clickWriteComment() {
         click(getWriteCommentLinks().get(0));
+
+        return createLanguagePage();
     }
 
     public void clickFormLink() {
@@ -221,7 +240,22 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
         click(gravatarFriendlyLink);
     }
 
-    public void clickSubmitCommentButton() {
+    public LanguagePageType clickSubmitCommentButton() {
         click(submitCommentButton);
+
+        return createLanguagePage();
+    }
+
+    public String getSecurityCodeBorder() {
+
+        return getBorder(inputCaptcha);
+    }
+
+    public void inputAddCommentfields(String name, String email, String url, String captcha, String comment) {
+        inputClear(name, inputName);
+        inputClear(email, inputEmail);
+        inputClear(url, inputURL);
+        inputClear(captcha, inputCaptcha);
+        inputClear(comment, textarea);
     }
 }

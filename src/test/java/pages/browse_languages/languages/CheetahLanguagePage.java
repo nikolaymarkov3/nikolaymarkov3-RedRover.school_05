@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheetahLanguagePage extends LanguagePage {
+public class CheetahLanguagePage extends LanguagePage<CheetahLanguagePage> {
 
     @FindBy(xpath = "//a[@href='http://cheetahtemplate.org/']")
     private WebElement cheetahLanguageInfoLink;
@@ -15,5 +15,10 @@ public class CheetahLanguagePage extends LanguagePage {
 
     public void clickCheetahLanguageInfoLink() {
         click(cheetahLanguageInfoLink);
+    }
+
+    protected CheetahLanguagePage createLanguagePage() {
+
+        return new CheetahLanguagePage(getDriver());
     }
 }

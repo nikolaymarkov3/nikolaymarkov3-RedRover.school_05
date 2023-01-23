@@ -136,22 +136,77 @@ public class KotlinLanguageTest extends BaseTest {
                         .clickKSubmenu()
                         .clickKotlinLanguage();
 
-        kotlinLanguagePage.clickWriteComment();
+        String actualOldBorder =
+                kotlinLanguagePage
+                        .clickWriteComment()
+                        .getCommentBorder();
 
-        String actualOldBorder = kotlinLanguagePage.getCommentBorder();
         Assert.assertEquals(actualOldBorder, expectedOldBorder);
 
-        kotlinLanguagePage.clickSubmitCommentButton();
+        String errorMessage =
+                kotlinLanguagePage
+                        .clickSubmitCommentButton()
+                        .getErrorMessageText();
 
-        String errorMessage = kotlinLanguagePage.getErrorMessageText();
         Assert.assertTrue(errorMessage.isEmpty(), "No error message");
 
-        kotlinLanguagePage.clickWriteComment();
+        String actualErrorMessage =
+                kotlinLanguagePage
+                        .clickWriteComment()
+                        .getErrorMessageText();
 
-        String actualErrorMessage = kotlinLanguagePage.getErrorMessageText();
-        String actualBorderOfRequiredFieldComment = kotlinLanguagePage.getCommentBorder();
+        String actualBorderOfRequiredFieldComment =
+                kotlinLanguagePage
+                        .getCommentBorder();
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
         Assert.assertEquals(actualBorderOfRequiredFieldComment, expectedBorderOfRequiredFieldComment);
+    }
+
+    @Test
+    public void testErrorTextSecurityCodeAppearsWhenClickingButtonSubmitComment() {
+        final String name = "test";
+        final String email = "test";
+        final String url = "test";
+        final String captcha = "test";
+        final String comment = "test";
+        final String expectedOldBorder = "1px solid rgb(153, 153, 153)";
+        final String expectedErrorMessage = "Error: Error: Invalid security code.";
+        final String expectedBorderOfRequiredFieldComment = "1px solid rgb(255, 0, 0)";
+
+        KotlinLanguagePage kotlinLanguagePage =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickKSubmenu()
+                        .clickKotlinLanguage();
+
+        String actualOldBorder =
+                kotlinLanguagePage
+                        .clickWriteComment()
+                        .getSecurityCodeBorder();
+
+        Assert.assertEquals(actualOldBorder, expectedOldBorder);
+
+        kotlinLanguagePage.inputAddCommentfields(name, email, url, captcha, comment);
+
+        String errorMessage =
+                kotlinLanguagePage
+                        .clickSubmitCommentButton()
+                        .getErrorMessageText();
+
+        Assert.assertTrue(errorMessage.isEmpty(), "No error message");
+
+        String actualErrorMessage =
+                kotlinLanguagePage
+                        .clickWriteComment()
+                        .getErrorMessageText();
+
+        String actualBorderOfRequiredFieldComment =
+                kotlinLanguagePage
+                        .getSecurityCodeBorder();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+        Assert.assertEquals(actualBorderOfRequiredFieldComment, expectedBorderOfRequiredFieldComment);
+        Assert.assertNotEquals(actualOldBorder, actualBorderOfRequiredFieldComment);
     }
 }

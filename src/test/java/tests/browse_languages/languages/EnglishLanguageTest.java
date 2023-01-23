@@ -30,15 +30,13 @@ public class EnglishLanguageTest extends BaseTest {
                 .clickESubmenu()
                 .clickEnglishLanguage();
 
-        englishLanguagePage.clickWriteComment();
-
-        String oldURL = englishLanguagePage.getURL();
+        String oldURL2 = englishLanguagePage.clickWriteComment().getURL();
 
         englishLanguagePage.clickFormLink();
 
         String actualURL = englishLanguagePage.getURL();
 
-        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldURL2, actualURL);
         Assert.assertEquals(actualURL, expectedURL);
     }
 }

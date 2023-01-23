@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LiLiLanguagePage extends LanguagePage {
+public class LiLiLanguagePage extends LanguagePage<LiLiLanguagePage> {
 
     @FindBy(xpath = "//a[@href='http://littlisp.sourceforge.net']")
     private WebElement liliLanguageInfoLink;
@@ -15,5 +15,10 @@ public class LiLiLanguagePage extends LanguagePage {
 
     public void clickLiLiLanguageInfoLink() {
         click(liliLanguageInfoLink);
+    }
+
+    protected LiLiLanguagePage createLanguagePage() {
+
+        return new LiLiLanguagePage(getDriver());
     }
 }

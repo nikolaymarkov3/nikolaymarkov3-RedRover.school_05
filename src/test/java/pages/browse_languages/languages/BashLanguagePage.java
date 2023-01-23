@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BashLanguagePage extends LanguagePage {
+public class BashLanguagePage extends LanguagePage<BashLanguagePage> {
 
     @FindBy(xpath = "//a[@href='http://fr.lang.free.fr/cours']")
     private WebElement bashLanguageInfoLink;
@@ -15,5 +15,10 @@ public class BashLanguagePage extends LanguagePage {
 
     public void clickBashLanguageInfoLink() {
         click(bashLanguageInfoLink);
+    }
+
+    protected BashLanguagePage createLanguagePage() {
+
+        return new BashLanguagePage(getDriver());
     }
 }

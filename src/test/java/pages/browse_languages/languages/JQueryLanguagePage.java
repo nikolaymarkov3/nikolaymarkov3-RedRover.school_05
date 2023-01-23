@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class JQueryLanguagePage extends LanguagePage {
+public class JQueryLanguagePage extends LanguagePage<JQueryLanguagePage> {
 
     @FindBy(xpath = "//a[@href='http://jquery.com']")
     private WebElement jQueryLanguageInfoLink;
@@ -15,5 +15,10 @@ public class JQueryLanguagePage extends LanguagePage {
 
     public void clickJQueryLanguageInfoLink() {
         click(jQueryLanguageInfoLink);
+    }
+
+    protected JQueryLanguagePage createLanguagePage() {
+
+        return new JQueryLanguagePage(getDriver());
     }
 }
