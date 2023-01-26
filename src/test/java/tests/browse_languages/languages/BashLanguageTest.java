@@ -1,5 +1,6 @@
 package tests.browse_languages.languages;
 
+import org.testng.annotations.Ignore;
 import testData.TestData;
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
@@ -76,6 +77,6 @@ public class BashLanguageTest extends BaseTest {
         String actualBookmarkUrl = bashLanguagePage.clickMenu(index, bookmarkList).getURL();
 
         Assert.assertNotEquals(actualBookmarkUrl, oldURL);
-        Assert.assertTrue(actualBookmarkUrl.contains(href));
+        Assert.assertTrue(actualBookmarkUrl.contains(href), "actualBookmarkUrl is: " + actualBookmarkUrl);
     }
 }

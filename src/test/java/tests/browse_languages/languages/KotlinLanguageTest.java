@@ -65,7 +65,7 @@ public class KotlinLanguageTest extends BaseTest {
 
         String actualOldH2HeaderAddComment = kotlinLanguagePage.getH2HeaderAddCommentText();
 
-        Assert.assertTrue(actualOldH2HeaderAddComment.isEmpty(), "Add comment is not visible");
+        Assert.assertTrue(actualOldH2HeaderAddComment.isEmpty(), "Add comment is visible");
 
         kotlinLanguagePage.clickWriteComment();
 
@@ -141,17 +141,17 @@ public class KotlinLanguageTest extends BaseTest {
                         .clickWriteComment()
                         .getCommentBorder();
 
-        Assert.assertEquals(actualOldBorder, expectedOldBorder);
-
-        String errorMessage =
+        int countErrorMessage =
                 kotlinLanguagePage
-                        .clickSubmitCommentButton()
-                        .getErrorMessageText();
+                        .getListErrorMessages()
+                        .size();
 
-        Assert.assertTrue(errorMessage.isEmpty(), "No error message");
+        Assert.assertTrue(countErrorMessage == 0, "The element Error message is on the page");
+        Assert.assertEquals(actualOldBorder, expectedOldBorder);
 
         String actualErrorMessage =
                 kotlinLanguagePage
+                        .clickSubmitCommentButton()
                         .clickWriteComment()
                         .getErrorMessageText();
 
@@ -185,19 +185,19 @@ public class KotlinLanguageTest extends BaseTest {
                         .clickWriteComment()
                         .getSecurityCodeBorder();
 
+        int countErrorMessage =
+                kotlinLanguagePage
+                        .getListErrorMessages()
+                        .size();
+
+        Assert.assertTrue(countErrorMessage == 0, "The element Error message is on the page");
         Assert.assertEquals(actualOldBorder, expectedOldBorder);
 
         kotlinLanguagePage.inputAddCommentfields(name, email, url, captcha, comment);
 
-        String errorMessage =
-                kotlinLanguagePage
-                        .clickSubmitCommentButton()
-                        .getErrorMessageText();
-
-        Assert.assertTrue(errorMessage.isEmpty(), "No error message");
-
         String actualErrorMessage =
                 kotlinLanguagePage
+                        .clickSubmitCommentButton()
                         .clickWriteComment()
                         .getErrorMessageText();
 

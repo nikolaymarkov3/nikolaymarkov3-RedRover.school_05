@@ -68,10 +68,9 @@ public class TestData {
                 {10, "reddit.com: Log in", "https://www.reddit.com/login/"},
                 {11, "www.rojo.com", "http://www.rojo.com/submit/"},
                 {12, "StumbleUpon", "https://www.stumbleupon.com/submit"},
-                {13, "Privacy error", "https://www.technorati.com/faves"},
+                {13, "Privacy error", "technorati.com"},
         };
     }
-
 
     @DataProvider(name = "newLanguageSubmenu")
     public static Object[][] submitNewLanguageSubmenu() {

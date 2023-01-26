@@ -78,6 +78,9 @@ public abstract class LanguagePage<LanguagePageType> extends BrowseLanguagesSubm
     @FindBy(xpath = ADD_COMMENTS_PATH + "/p[@style]")
     private WebElement errorMessage;
 
+    @FindBy(xpath = ADD_COMMENTS_PATH + "/p[@style]")
+    private List<WebElement> listErrorMessages;
+
     @FindBy(name = "name")
     private WebElement inputName;
 
@@ -152,6 +155,11 @@ public abstract class LanguagePage<LanguagePageType> extends BrowseLanguagesSubm
     public String getErrorMessageText() {
 
         return getText(errorMessage);
+    }
+
+    public List<WebElement> getListErrorMessages() {
+
+        return listErrorMessages;
     }
 
     public List<WebElement> getWriteCommentLinks() {
