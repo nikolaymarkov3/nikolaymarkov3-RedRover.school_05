@@ -17,6 +17,9 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     @FindBy(name = "email")
     private WebElement email;
 
+    @FindBy(name = "comment")
+    private WebElement message;
+
     @FindBy(xpath = "//div[@id='main']/p")
     private WebElement errorMessage;
 
@@ -51,6 +54,10 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
         input(text, email);
 
         return createPage();
+    }
+
+    public void inputMessage(String text) {
+        input(text, message);
     }
 
     public String getErrorMessageText() {
@@ -105,12 +112,12 @@ public abstract class FormPage<GenericType> extends MainPage<GenericType> {
     }
 
     public void dismissAlert() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
     }
 
     public void dismissTwoAlerts() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
         alert.dismiss();
     }

@@ -46,10 +46,6 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
         super(driver);
     }
 
-    public void inputMessage(String text) {
-        input(text, message);
-    }
-
     public SignGuestbookPage clickSubmitButton() {
         click(submitButton);
 
@@ -83,6 +79,24 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
 
     public SignGuestbookPage inputSingGuestbookLocation(String text) {
         input(text, input2SignGuestbookForm);
+
+        return this;
+    }
+
+    public SignGuestbookPage inputSingGuestbookEmail(String text) {
+        input(text, input3SignGuestbookForm);
+
+        return this;
+    }
+
+    public SignGuestbookPage inputSingGuestbookHomepage(String text) {
+        input(text, input4SignGuestbookForm);
+
+        return this;
+    }
+
+    public SignGuestbookPage inputSingGuestbookMessage(String text) {
+        input(text, message);
 
         return this;
     }

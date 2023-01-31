@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.guest_book.SignGuestbookPage;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class API_SignGuestbookTest extends BaseTest {
@@ -21,11 +23,16 @@ public class API_SignGuestbookTest extends BaseTest {
     final static String NAME_INPUT_6 = "submit";
     final static String VALUE_INPUT_1 = "Guest";
     final static String VALUE_INPUT_2 = "USA";
-    final static String VALUE_INPUT_4 = "http%3A%2F%2F";
+    final static String VALUE_INPUT_3 = "guest@gmail.com";
+    final static String HTTP = "http://";
+    final static String VALUE_INPUT_4 = "lagoldgymnastics.com";
+    final static String TEXTAREA_TEXT = "Test message";
     final static String VALUE_INPUT_6 = "Submit";
     final static String PAYLOAD = NAME_INPUT_1 + "=" + VALUE_INPUT_1 + "&" + NAME_INPUT_2 + "=" + VALUE_INPUT_2 + "&"
-            + NAME_INPUT_3 + "=" + "&" + NAME_INPUT_4 + "=" + VALUE_INPUT_4 + "&" + NAME_INPUT_5 + "="
-            + "&" + NAME_TEXTAREA + "=" + "&" + NAME_INPUT_6 + "=" + VALUE_INPUT_6;
+            + NAME_INPUT_3 + "=" + URLEncoder.encode(VALUE_INPUT_3, StandardCharsets.UTF_8) + "&" + NAME_INPUT_4 + "="
+            + URLEncoder.encode(HTTP, StandardCharsets.UTF_8) + URLEncoder.encode(VALUE_INPUT_4, StandardCharsets.UTF_8)
+            + "&" + NAME_INPUT_5 + "=" + "&" + NAME_TEXTAREA + "=" + URLEncoder.encode(TEXTAREA_TEXT, StandardCharsets.UTF_8)
+            + "&" + NAME_INPUT_6 + "=" + VALUE_INPUT_6;
     final static String PAGE_CONTEXT_BEFORE_REQUEST = "Sign Guestbook\n"
             + "Name:\n\n"
             + "Location: (optional)\n\n"
@@ -102,6 +109,9 @@ public class API_SignGuestbookTest extends BaseTest {
                 .clickSignGuestbookSubmenu()
                 .inputSingGuestbookName(VALUE_INPUT_1)
                 .inputSingGuestbookLocation(VALUE_INPUT_2)
+                .inputSingGuestbookEmail(VALUE_INPUT_3)
+                .inputSingGuestbookHomepage(VALUE_INPUT_4)
+                .inputSingGuestbookMessage(TEXTAREA_TEXT)
                 .clickSubmitButton();
 
         Assert.assertEquals(httpRequest.get(0).toLowerCase(), METHOD);
@@ -127,6 +137,9 @@ public class API_SignGuestbookTest extends BaseTest {
                         .clickSignGuestbookSubmenu()
                         .inputSingGuestbookName(VALUE_INPUT_1)
                         .inputSingGuestbookLocation(VALUE_INPUT_2)
+                        .inputSingGuestbookEmail(VALUE_INPUT_3)
+                        .inputSingGuestbookHomepage(VALUE_INPUT_4)
+                        .inputSingGuestbookMessage(TEXTAREA_TEXT)
                         .clickSubmitButton();
 
         Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
