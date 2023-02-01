@@ -18,6 +18,9 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
     @FindBy(xpath = TOP_LISTS_PATH + "'./toplist_esoteric.html']")
     private WebElement topRatedEsotericSubmenu;
 
+    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist_assembly.html']")
+    private WebElement topRatedAssemblySubmenu;
+
     @FindBy(xpath = TOP_LISTS_PATH + "'./newcomments.html']")
     private WebElement newCommentsSubmenu;
 
@@ -61,6 +64,12 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
         click(topRatedEsotericSubmenu);
 
         return new TopRatedEsotericPage(getDriver());
+    }
+
+    public TopRatedAssemblyPage clickTopRatedAssemblySubmenu() {
+        click(topRatedAssemblySubmenu);
+
+        return new TopRatedAssemblyPage(getDriver());
     }
 
     public NewCommentsPage clickNewCommentsSubmenu() {
