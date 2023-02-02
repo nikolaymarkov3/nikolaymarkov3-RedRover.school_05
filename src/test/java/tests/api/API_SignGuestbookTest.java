@@ -2,10 +2,15 @@ package tests.api;
 
 import base.BaseTest;
 import network.CaptureNetworkTraffic;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.guest_book.SignGuestbookPage;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -149,4 +154,44 @@ public class API_SignGuestbookTest extends BaseTest {
                 Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
         Assert.assertNotEquals(signGuestbookPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
+
+    @Test
+    public void test_API_AllSignGuestbookImagesAreNotBroken() {
+        String imageURL = "";
+        int responseCode;
+        int actualWorkingImagesCount = 0;
+        SignGuestbookPage signGuestbookPage = new SignGuestbookPage(getDriver());
+
+        List<WebElement> imgTags =
+                openBaseURL()
+                        .clickGuestbookLink()
+                        .clickSignGuestbookSubmenu()
+                        .getImages();
+
+        final int expectedWorkingImagesCount = imgTags.size();
+
+        for (WebElement image : imgTags) {
+            imageURL = image.getAttribute("src");
+
+            if (imageURL != null && !imageURL.isBlank() && !imageURL.isEmpty()) {
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) (new URL(imageURL).openConnection());
+                    connection.connect();
+
+                    responseCode = connection.getResponseCode();
+
+                    if (responseCode < 400 && signGuestbookPage.isImageDisplayed(image)) {
+                        actualWorkingImagesCount++;
+                    } else {
+                        Reporter.log(imageURL + " is broken, responseCode " + responseCode + " OR image not displayed ", true);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        Assert.assertEquals(actualWorkingImagesCount, expectedWorkingImagesCount);
+    }
 }
+
