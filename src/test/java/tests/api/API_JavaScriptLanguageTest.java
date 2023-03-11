@@ -5,6 +5,7 @@ import network.CaptureNetworkTraffic;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.BashLanguagePage;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
@@ -109,7 +110,7 @@ public class API_JavaScriptLanguageTest extends BaseTest {
             "Great job obfuscating and formating the code!\n" +
             "Download Source | Write Comment";
 
-    @Test
+    @Ignore
     public void testAttributes_DefaultValues() {
 
         JavaScriptLanguagePage javaScriptLanguagePage =

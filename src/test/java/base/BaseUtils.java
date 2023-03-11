@@ -46,6 +46,7 @@ public final class BaseUtils {
         initProperties();
 
         chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--remote-allow-origins=*");
         String options = properties.getProperty(PROP_CHROME_OPTIONS);
         if (options != null) {
             for (String argument : options.split(";")) {
